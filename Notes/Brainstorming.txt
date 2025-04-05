@@ -11,8 +11,6 @@ Ideas:
 		Run left and right on the anchor (WASD)/Controller
 		You grab the center and then pull it to the left or right (click to pull/R2)
 
-
-
 EnvironmentalSpawner:
 	Spawns everything like Mobs and Ground or Pickups/Points
 	
@@ -35,3 +33,19 @@ STORY:
 		Good way? Bad way?
 		
 	You are not attached to anything, you're just free falling
+	
+	The anchor is what "anchors you"
+		so you need to protect it, and stay near it (aka don't fall off)
+			As you fall into the depths of madness you stay tethered to that which is untethered
+				The anchor
+
+	At some point you make it through
+		and the lighting reverses and everything spawns upside down
+			as you move "down" but are actually moving "up"
+	
+	"You need to survive the trip"
+	
+	You die if:
+		If your anchor loses health 
+		You fall off
+		Something kills you

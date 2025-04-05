@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdgj1avkosw8o"]
+[gd_scene load_steps=18 format=3 uid="uid://bdgj1avkosw8o"]
 
 [ext_resource type="PackedScene" uid="uid://cykv8euj3jmtr" path="res://Components/Anchor/DepthAnchor.tscn" id="1_mdmvh"]
+[ext_resource type="Shader" uid="uid://b2x2s46atom5x" path="res://Prototyping/ScrollingBackgroundShader.gdshader" id="1_qhbih"]
 [ext_resource type="PackedScene" uid="uid://cc77pfnhoplrf" path="res://Components/Player/Player.tscn" id="2_qhbih"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mdmvh"]
@@ -11,33 +12,66 @@ ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 sky_material = SubResource("ProceduralSkyMaterial_mdmvh")
 
 [sub_resource type="Environment" id="Environment_dy33k"]
-background_energy_multiplier = 0.4
 sky = SubResource("Sky_qhbih")
 tonemap_mode = 2
 glow_enabled = true
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.0113
+volumetric_fog_density = 0.0359
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_okmsv"]
 size = Vector2(95, 286.61)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_mdmvh"]
-seed = 290
-frequency = 0.1959
+[sub_resource type="Gradient" id="Gradient_qhbih"]
+offsets = PackedFloat32Array(0, 0.769504)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qhbih"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qhbih"]
+noise_type = 3
+frequency = 0.0034
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dy33k"]
+in_3d_space = true
 seamless = true
-noise = SubResource("FastNoiseLite_mdmvh")
+seamless_blend_skirt = 0.373
+color_ramp = SubResource("Gradient_qhbih")
+noise = SubResource("FastNoiseLite_qhbih")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dy33k"]
-albedo_color = Color(0.312466, 0.312466, 0.312466, 1)
-albedo_texture = SubResource("NoiseTexture2D_qhbih")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dy33k"]
+render_priority = 0
+shader = ExtResource("1_qhbih")
+shader_parameter/base_texture = SubResource("NoiseTexture2D_dy33k")
+shader_parameter/time_scale = 3.665
+shader_parameter/wave_strength = 0.098
+shader_parameter/wave_frequency = 2.219
+shader_parameter/texture_scroll_speed = 0.06
 
 [sub_resource type="BoxMesh" id="BoxMesh_mdmvh"]
-size = Vector3(25, 25, 25)
+size = Vector3(25, 114.87, 48.86)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qhbih"]
 data = PackedVector3Array(-12.5, 12.5, 12.5, 12.5, 12.5, 12.5, -12.5, -12.5, 12.5, 12.5, 12.5, 12.5, 12.5, -12.5, 12.5, -12.5, -12.5, 12.5, 12.5, 12.5, -12.5, -12.5, 12.5, -12.5, 12.5, -12.5, -12.5, -12.5, 12.5, -12.5, -12.5, -12.5, -12.5, 12.5, -12.5, -12.5, 12.5, 12.5, 12.5, 12.5, 12.5, -12.5, 12.5, -12.5, 12.5, 12.5, 12.5, -12.5, 12.5, -12.5, -12.5, 12.5, -12.5, 12.5, -12.5, 12.5, -12.5, -12.5, 12.5, 12.5, -12.5, -12.5, -12.5, -12.5, 12.5, 12.5, -12.5, -12.5, 12.5, -12.5, -12.5, -12.5, 12.5, 12.5, 12.5, -12.5, 12.5, 12.5, 12.5, 12.5, -12.5, -12.5, 12.5, 12.5, -12.5, 12.5, -12.5, 12.5, 12.5, -12.5, -12.5, -12.5, 12.5, 12.5, -12.5, 12.5, -12.5, -12.5, -12.5, 12.5, -12.5, 12.5, 12.5, -12.5, -12.5, -12.5, -12.5, -12.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhbih"]
+albedo_color = Color(0.483746, 0.483746, 0.483746, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qhbih"]
+lifetime_randomness = 0.09
+velocity_pivot = Vector3(0, -3.98, 0)
+direction = Vector3(1, -1.24, 0)
+gravity = Vector3(0, 16.06, 0)
+scale_min = 0.5
+scale_max = 2.5
+turbulence_enabled = true
+turbulence_noise_strength = 4.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dy33k"]
+transparency = 1
+albedo_color = Color(0.192157, 0.694118, 0.698039, 0.482353)
+metallic = 0.2
+metallic_specular = 1.0
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_dy33k"]
+material = SubResource("StandardMaterial3D_dy33k")
 
 [node name="TestingDepth" type="Node3D"]
 
@@ -46,12 +80,13 @@ environment = SubResource("Environment_dy33k")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-light_energy = 0.106
+light_color = Color(0.12725, 0.636425, 0.794976, 1)
+light_energy = 0.24
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0195116, -0.99981, 0, 0.99981, -0.0195116, 0, 0, -19.5203)
 mesh = SubResource("PlaneMesh_okmsv")
-surface_material_override/0 = SubResource("StandardMaterial3D_dy33k")
+surface_material_override/0 = SubResource("ShaderMaterial_dy33k")
 
 [node name="Anchor" parent="." instance=ExtResource("1_mdmvh")]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, 0, 0)
@@ -68,3 +103,47 @@ mesh = SubResource("BoxMesh_mdmvh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qhbih")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.4889, 0, 0)
+mesh = SubResource("BoxMesh_mdmvh")
+surface_material_override/0 = SubResource("StandardMaterial3D_qhbih")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qhbih")
+
+[node name="Particles" type="Node3D" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Particles"]
+transform = Transform3D(-0.024816, -0.999692, 0, 0.999692, -0.024816, 0, 0, 0, 1, 0, -17.0685, 0)
+lifetime = 3.87
+explosiveness = 0.29
+randomness = 0.15
+process_material = SubResource("ParticleProcessMaterial_qhbih")
+draw_pass_1 = SubResource("SphereMesh_dy33k")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Particles"]
+transform = Transform3D(-0.024816, -0.999692, 0, 0.999692, -0.024816, 0, 0, 0, 1, 26.3728, -17.0685, 0)
+lifetime = 3.87
+explosiveness = 0.29
+randomness = 0.15
+process_material = SubResource("ParticleProcessMaterial_qhbih")
+draw_pass_1 = SubResource("SphereMesh_dy33k")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Particles"]
+transform = Transform3D(-0.024816, -0.999692, 0, 0.999692, -0.024816, 0, 0, 0, 1, -33.3101, -17.0685, 0)
+lifetime = 3.87
+explosiveness = 0.29
+randomness = 0.15
+process_material = SubResource("ParticleProcessMaterial_qhbih")
+draw_pass_1 = SubResource("SphereMesh_dy33k")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="Particles"]
+transform = Transform3D(-0.024816, -0.999692, 0, 0.999692, -0.024816, 0, 0, 0, 1, -18.0658, -17.0685, 0)
+lifetime = 3.87
+explosiveness = 0.29
+randomness = 0.15
+process_material = SubResource("ParticleProcessMaterial_qhbih")
+draw_pass_1 = SubResource("SphereMesh_dy33k")
