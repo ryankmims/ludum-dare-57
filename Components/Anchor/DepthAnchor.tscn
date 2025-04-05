@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=4 uid="uid://cykv8euj3jmtr"]
+[gd_scene load_steps=17 format=4 uid="uid://cykv8euj3jmtr"]
 
 [ext_resource type="Script" uid="uid://edemiybpsu75" path="res://Scripts/Components/DepthAnchor/DepthAnchor.gd" id="1_qcg1t"]
 [ext_resource type="Texture2D" uid="uid://bm2qcmw0f26cu" path="res://Sprites/anchor_health_icon.png" id="2_oprqa"]
-[ext_resource type="Script" uid="uid://dnt83nudyp4w8" path="res://Components/Anchor/StoppingArea.gd" id="3_h7gq6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07yle"]
 resource_name = "Material"
@@ -55,6 +54,21 @@ grow_amount = 0.05
 next_pass = SubResource("StandardMaterial3D_h7gq6")
 diffuse_mode = 3
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oprqa"]
+radius = 3.27964
+height = 14.7917
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h7gq6"]
+radius = 6.15968
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h7gq6"]
+radius = 3.9228
+height = 31.5278
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e5ix0"]
+radius = 3.09308
+height = 21.6492
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_qcg1t"]
 radius = 6.26501
 
@@ -71,17 +85,43 @@ size = Vector3(2.1001, 23.6254, 9.71843)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qcg1t"]
 size = Vector3(2.1001, 23.7455, 24.294)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_oprqa"]
-size = Vector3(1, 15.0454, 34.7579)
-
 [node name="DepthAnchor" type="Node3D"]
 script = ExtResource("1_qcg1t")
 
-[node name="AnchorMesh" type="MeshInstance3D" parent="."]
+[node name="MeshAndStoppingAreaContainer" type="Node3D" parent="."]
+
+[node name="AnchorMesh" type="MeshInstance3D" parent="MeshAndStoppingAreaContainer"]
 transform = Transform3D(0.112436, 4.09179, 0, -4.09179, 0.112436, 0, 0, 0, 2.89098, -0.582422, 14.9243, 0.57967)
 mesh = SubResource("ArrayMesh_qvfrk")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_ioskg")
+
+[node name="StoppingArea" type="Area3D" parent="MeshAndStoppingAreaContainer"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshAndStoppingAreaContainer/StoppingArea"]
+transform = Transform3D(1, 0, 0, 0, 0.604502, 0.796604, 0, -0.796604, 0.604502, 0.149818, -5.40897, -10.5339)
+shape = SubResource("CapsuleShape3D_oprqa")
+debug_color = Color(0.988207, 0, 0.304575, 0.42)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshAndStoppingAreaContainer/StoppingArea"]
+transform = Transform3D(-0.997594, 0.0552214, -0.0419047, -6.59086e-09, 0.604502, 0.796604, 0.0693211, 0.794688, -0.603048, -0.349944, -5.40897, 11.5667)
+shape = SubResource("CapsuleShape3D_oprqa")
+debug_color = Color(0.988207, 0, 0.304575, 0.42)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="MeshAndStoppingAreaContainer/StoppingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.50052, 0.516351)
+shape = SubResource("SphereShape3D_h7gq6")
+debug_color = Color(0.97295, 0, 0.437454, 0.42)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshAndStoppingAreaContainer/StoppingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.473, 0)
+shape = SubResource("CapsuleShape3D_h7gq6")
+debug_color = Color(0.98297, 0, 0.357349, 0.42)
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="MeshAndStoppingAreaContainer/StoppingArea"]
+transform = Transform3D(1, 0, 0, 0, 0.00940724, -0.999956, 0, 0.999956, 0.00940724, -0.93124, 27.4717, 0.769269)
+shape = SubResource("CapsuleShape3D_e5ix0")
+debug_color = Color(0.974891, 0, 0.423456, 0.42)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.36949e-08, -0.027468, -0.999623, -1.20067e-09, 0.999623, -0.027468, 1, -1.11022e-16, -4.37114e-08, -53.4423, 0.485123, 1.56688)
@@ -93,6 +133,7 @@ current = true
 shape = SubResource("SphereShape3D_qcg1t")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+visible = false
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(0.999999, 0.00172787, -4.36194e-08, -0.00172787, 0.999999, 4.25107e-08, 4.36928e-08, -4.24352e-08, 1, -0.540073, 13.3832, 0.529541)
@@ -140,14 +181,7 @@ pixel_size = 0.05
 billboard = 1
 texture = ExtResource("2_oprqa")
 
-[node name="StoppingArea" type="Area3D" parent="."]
-script = ExtResource("3_h7gq6")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StoppingArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.02271, 0.700653)
-shape = SubResource("BoxShape3D_oprqa")
-
+[connection signal="body_entered" from="MeshAndStoppingAreaContainer/StoppingArea" to="." method="_on_stopping_area_body_entered"]
+[connection signal="body_exited" from="MeshAndStoppingAreaContainer/StoppingArea" to="." method="_on_stopping_area_body_exited"]
 [connection signal="body_entered" from="AnchorControlArea" to="." method="_on_anchor_control_area_body_entered"]
 [connection signal="body_exited" from="AnchorControlArea" to="." method="_on_anchor_control_area_body_exited"]
-[connection signal="body_entered" from="StoppingArea" to="." method="_on_stopping_area_body_entered"]
-[connection signal="body_exited" from="StoppingArea" to="." method="_on_stopping_area_body_exited"]

@@ -5,9 +5,10 @@ func _ready() -> void:
 		connect("body_entered", _on_body_entered)
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is StaticBody3D:
-		var mesh_instance = body.get_parent()
-		if mesh_instance is MeshInstance3D:
-			var platform = mesh_instance.get_parent()
-			if platform is SpawnableEntity:
-				platform.take_damage(1)
+	pass
+	#if body is StaticBody3D:
+		#var mesh_instance = body.get_parent()
+		#if mesh_instance is MeshInstance3D:
+			#var platform = mesh_instance.get_parent()
+			#if platform is SpawnableEntity:
+				#platform.take_damage(1)

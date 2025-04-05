@@ -13,7 +13,8 @@ const MIN_ANCHOR_POSITION := -30.0
 const MAX_ANCHOR_POSITION := 30.0
 
 @onready var camera := $Camera3D
-@onready var anchor_mesh := $AnchorMesh
+@onready var anchor_mesh := $MeshAndStoppingAreaContainer/AnchorMesh
+@onready var mesh_and_stopping_area_container := $MeshAndStoppingAreaContainer
 
 @export var max_downward_velocity := 15.0
 @export var camera_lerp_speed: float = 5.0
@@ -32,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		target_rotation = 0.0
 		
-	anchor_mesh.rotation.x = lerp(anchor_mesh.rotation.x, target_rotation, ROTATION_LERP_SPEED * delta)
+	mesh_and_stopping_area_container.rotation.x = lerp(mesh_and_stopping_area_container.rotation.x, target_rotation, ROTATION_LERP_SPEED * delta)
 
 func handle_movement(delta : float):
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -68,6 +69,7 @@ func _on_stopping_area_body_entered(body: Node3D) -> void:
 		var spawnable_entity = body.get_parent().get_parent() as SpawnableEntity
 		if spawnable_entity.can_collide:
 			spawnable_entity.environment_spawner.is_falling = false
+			spawnable_entity.take_damage(1)
 
 func _on_stopping_area_body_exited(body: Node3D) -> void:
 	if body.get_parent().get_parent() is SpawnableEntity:
