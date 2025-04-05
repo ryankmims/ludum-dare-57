@@ -11,6 +11,9 @@ const JUMP_VELOCITY = 7.5
 
 @onready var headlamp_light := $Man/Armature/Skeleton3D/BoneAttachment3D/HeadlampLight
 
+@onready var music_player := $MusicPlayer
+@onready var voice_player := $VoicePlayer
+
 @export var anchor : DepthAnchor
 @export var game_scene : GameScene
 
@@ -27,14 +30,20 @@ var just_grabbed_anchor := false
 
 var dead := false
 
+func _ready() -> void:
+	music_player.play()
+
 func _process(delta: float) -> void:
+	handle_music()
+	
 	if dead:
 		game_scene.main.go_insane()
 	
 	check_for_fall_death() 
 	handle_light(delta)
 	
-	control_anchor_label.visible = can_control_anchor
+	control_anchor_label.visible = can_control_anchor && !anchor.is_grabbed
+	
 	if can_control_anchor:
 		if Input.is_action_just_pressed("control_anchor"):
 			just_grabbed_anchor = true
@@ -61,6 +70,10 @@ func _process(delta: float) -> void:
 	else:
 		animation_player.play("Idle")
 		
+
+func handle_music():
+	await music_player.finished
+	music_player.play()
 
 func handle_light(delta : float):
 	sanity -= 0.05 * delta

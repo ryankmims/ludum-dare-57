@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=4 uid="uid://cc77pfnhoplrf"]
+[gd_scene load_steps=23 format=4 uid="uid://cc77pfnhoplrf"]
 
 [ext_resource type="Script" uid="uid://kau50xchdu4r" path="res://Scripts/Components/Player/Player.gd" id="1_a50ic"]
 [ext_resource type="Texture2D" uid="uid://b65qyi3fccacs" path="res://Models/Man/Man_HelmetTexture.png" id="2_8qe71"]
 [ext_resource type="Material" uid="uid://16sxpbxeygfg" path="res://Materials/Player/PlayerMaterial.tres" id="2_cyqth"]
+[ext_resource type="AudioStream" uid="uid://dyssge3pksyip" path="res://Audio/Music/core_ambient_theme.wav" id="4_n5pqa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wikpc"]
 resource_name = "Material"
@@ -1507,9 +1508,22 @@ shape = SubResource("CapsuleShape3D_cyqth")
 [node name="PlayerUI" type="Node2D" parent="."]
 
 [node name="ControlAnchorLabel" type="Label" parent="PlayerUI"]
-offset_left = 530.0
-offset_top = 585.0
-offset_right = 648.0
-offset_bottom = 635.0
-text = "Control Anchor"
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 881.0
+offset_top = 827.0
+offset_right = 999.0
+offset_bottom = 850.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Grab"
 label_settings = SubResource("LabelSettings_a50ic")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_n5pqa")
+
+[node name="VoicePlayer" type="AudioStreamPlayer3D" parent="."]
