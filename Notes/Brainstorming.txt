@@ -9,7 +9,7 @@ TODO:
 	[ X ] Player model
 		- has a little hat with a light
 	[ ] As you descend, change lighting and fog
-		[ ] Win condition : reach a certain distance
+		[ X ] Win condition : reach a certain distance
 	[ ~ ] Platform diversity
 	[ ~ ] Refined collision
 	[ ] Enemies

@@ -13,7 +13,7 @@ const NORMAL_FOV := 75.0
 const MIN_ANCHOR_POSITION := -30.0
 const MAX_ANCHOR_POSITION := 30.0
 
-const DAMAGE_INTERVAL := 0.85  # Time in seconds between consecutive damage applications
+const DAMAGE_COOLDOWN := 0.5 
 
 const DISTANCE_GAIN_RATE := 1.0  
 
@@ -32,7 +32,7 @@ var target_rotation := 0.0
 var halt_rotation := false
 var current_speed_modifier := 1.0
 
-var damage_timer := 0.0
+var damage_cooldown_timer := 0.0
 var current_platform = null
 
 var distance_traveled := 0.0
@@ -41,6 +41,9 @@ func _process(delta: float) -> void:
 	handle_grab_camera(delta)
 
 func _physics_process(delta: float) -> void:
+	if damage_cooldown_timer > 0:
+		damage_cooldown_timer -= delta
+	
 	if is_grabbed:
 		handle_movement(delta)
 	else:
@@ -66,13 +69,12 @@ func handle_movement(delta : float):
 		
 		target_rotation = +direction.z * MAX_ROTATION
 		
-		# If we're moving and colliding with a platform, apply damage over time
+		# If we're moving and colliding with a platform, apply damage if cooldown allows
 		if current_platform != null and abs(global_position.x - prev_x) > 0.001:
-			damage_timer += delta
-			if damage_timer >= DAMAGE_INTERVAL:
-				damage_timer = 0.0
+			if damage_cooldown_timer <= 0:
 				if is_instance_valid(current_platform) and current_platform.can_collide:
 					current_platform.take_damage(1)
+					damage_cooldown_timer = DAMAGE_COOLDOWN
 	else:
 		target_rotation = 0.0
 		
@@ -100,11 +102,13 @@ func _on_stopping_area_body_entered(body: Node3D) -> void:
 		if spawnable_entity.can_collide:
 			halt_rotation = true
 			spawnable_entity.environment_spawner.is_falling = false
-			spawnable_entity.take_damage(1)
+
+			if damage_cooldown_timer <= 0:
+				spawnable_entity.take_damage(1)
+				damage_cooldown_timer = DAMAGE_COOLDOWN
 			
 			# Save current platform reference
 			current_platform = spawnable_entity
-			damage_timer = 0.0
 
 func _on_stopping_area_body_exited(body: Node3D) -> void:
 	if body.get_parent().get_parent() is SpawnableEntity:
