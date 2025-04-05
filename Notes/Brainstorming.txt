@@ -2,7 +2,7 @@ Theme: Depths
 
 TODO:
 	[ ] Fighting?
-	[ ] Player model
+	[ X ] Player model
 		- has a little hat with a light
 	[ ] As you descend, change lighting and fog
 	[ ] Platform diversity

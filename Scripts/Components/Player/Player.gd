@@ -28,6 +28,9 @@ var can_control_anchor := false
 var player_offset_at_grab : Vector3
 var just_grabbed_anchor := false
 
+var sanity_warning_timer := 0.0
+var sanity_warning_interval := 15.0
+
 var dead := false
 
 func _ready() -> void:
@@ -35,6 +38,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	handle_music()
+	handle_low_health()
 	
 	if dead:
 		game_scene.main.go_insane()
@@ -112,5 +116,13 @@ func add_light(amount : int):
 	sanity += amount
 
 func check_for_fall_death():
-	if global_position.y <= -25.0:
+	if global_position.y <= -20.0:
 		dead = true
+
+func handle_low_health():
+	var now = Time.get_unix_time_from_system()
+	if sanity <= 1.5:
+		if now - sanity_warning_timer >= sanity_warning_interval:
+			sanity_warning_timer = now
+			voice_player.play()
+	
