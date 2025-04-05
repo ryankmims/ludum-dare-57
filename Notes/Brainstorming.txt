@@ -1,15 +1,20 @@
 Theme: Depths
 
 TODO:
+	[ ] Starting counting "levels" based on... something?
+		How many leagues under the sea?
+		When do you resurface?
 	[ ] Fighting?
+	[ ] Dragging damage (must do ASAP)
 	[ X ] Player model
 		- has a little hat with a light
 	[ ] As you descend, change lighting and fog
-	[ ] Platform diversity
-	[ ] Refined collision
+		[ ] Win condition : reach a certain distance
+	[ ~ ] Platform diversity
+	[ ~ ] Refined collision
 	[ ] Enemies
 		- models for the enemies
-	[ ] Sound/Music
+	[ ~ ] Sound/Music
 
 NPCS:
 	Sanity Draining Mobs
