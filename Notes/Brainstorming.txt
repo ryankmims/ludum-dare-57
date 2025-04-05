@@ -1,0 +1,12 @@
+Theme: Depths
+
+Ideas:
+	Achor falling down and down and down [why?]
+	
+	Fishing lure that needs to descend [why?]
+	
+	A diver going down [why?]
+	
+	Would be cool if you're riding the anchor
+		Run left and right on the anchor (WASD)/Controller
+		You grab the center and then pull it to the left or right (click to pull/R2)
