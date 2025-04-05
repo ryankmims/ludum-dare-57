@@ -5,7 +5,7 @@ TODO:
 		How many leagues under the sea?
 		When do you resurface?
 	[ ] Fighting?
-	[ ] Dragging damage (must do ASAP)
+	[ X ] Dragging damage (must do ASAP)
 	[ X ] Player model
 		- has a little hat with a light
 	[ ] As you descend, change lighting and fog

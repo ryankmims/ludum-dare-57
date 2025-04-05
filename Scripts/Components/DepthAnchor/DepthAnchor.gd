@@ -13,7 +13,7 @@ const NORMAL_FOV := 75.0
 const MIN_ANCHOR_POSITION := -30.0
 const MAX_ANCHOR_POSITION := 30.0
 
-const DAMAGE_INTERVAL := 0.35  # Time in seconds between consecutive damage applications
+const DAMAGE_INTERVAL := 0.85  # Time in seconds between consecutive damage applications
 
 @onready var camera := $Camera3D
 @onready var anchor_mesh := $MeshAndStoppingAreaContainer/AnchorMesh
