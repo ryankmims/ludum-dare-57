@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cq1byr45p0y1a"]
+[gd_scene load_steps=5 format=3 uid="uid://cq1byr45p0y1a"]
 
 [ext_resource type="Script" uid="uid://bpnvy1v5gabxe" path="res://Scripts/Components/SpawnableEntities/SpawnableEntity.gd" id="1_vw4mq"]
+[ext_resource type="PackedScene" uid="uid://gr3d5j88v24h" path="res://Components/Collectable/YourLight.tscn" id="2_q6iil"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_q6iil"]
 size = Vector3(1.7, 3.1, 3.64)
@@ -19,3 +20,6 @@ mesh = SubResource("BoxMesh_q6iil")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vw4mq")
+
+[node name="YourLight" parent="." instance=ExtResource("2_q6iil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0152531, 2.2472, 0.0598316)

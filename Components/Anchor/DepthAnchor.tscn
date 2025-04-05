@@ -119,6 +119,7 @@ shape = SubResource("BoxShape3D_qcg1t")
 
 [node name="AnchorHealthBar" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.09641, 0)
+visible = false
 
 [node name="HealthOne" type="Sprite3D" parent="AnchorHealthBar"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.7247, 0)

@@ -59,7 +59,6 @@ func _on_anchor_control_area_body_entered(body: Node3D) -> void:
 	if body is Player:
 		body.can_control_anchor = true
 
-
 func _on_anchor_control_area_body_exited(body: Node3D) -> void:
 	if body is Player:
 		body.can_control_anchor = false

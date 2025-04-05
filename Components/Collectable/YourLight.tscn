@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://gr3d5j88v24h"]
+
+[ext_resource type="Script" uid="uid://cop12osot7f03" path="res://Scripts/Components/Collectable/Collectable.gd" id="1_8prak"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lwgd5"]
+radius = 1.04497
+
+[sub_resource type="SphereMesh" id="SphereMesh_kvwbb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2600b"]
+shading_mode = 0
+
+[node name="YourLight" type="Node3D"]
+script = ExtResource("1_8prak")
+
+[node name="CollectableArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectableArea"]
+shape = SubResource("SphereShape3D_lwgd5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_kvwbb")
+surface_material_override/0 = SubResource("StandardMaterial3D_2600b")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 5.757
+omni_range = 6.849
+
+[connection signal="body_entered" from="CollectableArea" to="." method="_on_collectable_area_body_entered"]
