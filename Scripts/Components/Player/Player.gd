@@ -31,6 +31,9 @@ var just_grabbed_anchor := false
 var sanity_warning_timer := 0.0
 var sanity_warning_interval := 15.0
 
+var flicker_timer := 0.0
+var flicker_target := 0.0
+
 var dead := false
 
 func _ready() -> void:
@@ -38,7 +41,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	handle_music()
-	handle_low_health()
+	handle_low_health(delta)
 	
 	if dead:
 		game_scene.main.go_insane()
@@ -79,9 +82,15 @@ func handle_music():
 	await music_player.finished
 	music_player.play()
 
-func handle_light(delta : float):
+func handle_light(delta: float) -> void:
 	sanity -= 0.05 * delta
-	headlamp_light.light_energy = pow(sanity / 5.0, 3.0) 
+	sanity = clamp(sanity, 0.0, 5.0)
+	
+	var sanity_factor = (sanity / 5.0) * (sanity / 5.0) 
+	var base_energy = 1.5 * sanity_factor
+	
+	headlamp_light.light_energy = max(0.05, base_energy + flicker_target)
+	headlamp_light.omni_range = lerp(0.5, 2.5, sanity_factor)
 	
 	if sanity <= 0.0:
 		dead = true
@@ -119,10 +128,22 @@ func check_for_fall_death():
 	if global_position.y <= -20.0:
 		dead = true
 
-func handle_low_health():
+func handle_low_health(delta: float = 0.0) -> void:
 	var now = Time.get_unix_time_from_system()
 	if sanity <= 1.5:
+		# Voice warning
 		if now - sanity_warning_timer >= sanity_warning_interval:
 			sanity_warning_timer = now
 			voice_player.play()
+		
+		# Light flickering effect
+		flicker_timer += delta
+		if flicker_timer >= 0.1:
+			flicker_timer = 0.0
+			var flicker_intensity = 0.5 * (1.0 - sanity / 1.5)
+			flicker_target = randf_range(-flicker_intensity, flicker_intensity * 0.7)
+		
+		flicker_target = lerp(flicker_target, 0.0, delta * 0.5)
+	else:
+		flicker_target = 0.0
 	
