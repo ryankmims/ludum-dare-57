@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://bdgj1avkosw8o"]
+[gd_scene load_steps=20 format=3 uid="uid://bdgj1avkosw8o"]
 
+[ext_resource type="Script" uid="uid://d1xnv0tn1j1r5" path="res://Prototyping/GameScene.gd" id="1_hb2ql"]
 [ext_resource type="PackedScene" uid="uid://cykv8euj3jmtr" path="res://Components/Anchor/DepthAnchor.tscn" id="1_mdmvh"]
 [ext_resource type="Shader" uid="uid://b2x2s46atom5x" path="res://Prototyping/ScrollingBackgroundShader.gdshader" id="1_qhbih"]
 [ext_resource type="PackedScene" uid="uid://cc77pfnhoplrf" path="res://Components/Player/Player.tscn" id="2_qhbih"]
@@ -9,11 +10,11 @@
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 
-[sub_resource type="Sky" id="Sky_qhbih"]
+[sub_resource type="Sky" id="Sky_dy33k"]
 sky_material = SubResource("ProceduralSkyMaterial_mdmvh")
 
 [sub_resource type="Environment" id="Environment_dy33k"]
-sky = SubResource("Sky_qhbih")
+sky = SubResource("Sky_dy33k")
 tonemap_mode = 2
 glow_enabled = true
 volumetric_fog_enabled = true
@@ -29,7 +30,7 @@ offsets = PackedFloat32Array(0, 0.769504)
 noise_type = 3
 frequency = 0.0034
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dy33k"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hb2ql"]
 in_3d_space = true
 seamless = true
 seamless_blend_skirt = 0.373
@@ -39,7 +40,7 @@ noise = SubResource("FastNoiseLite_qhbih")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dy33k"]
 render_priority = 0
 shader = ExtResource("1_qhbih")
-shader_parameter/base_texture = SubResource("NoiseTexture2D_dy33k")
+shader_parameter/base_texture = SubResource("NoiseTexture2D_hb2ql")
 shader_parameter/time_scale = 3.665
 shader_parameter/wave_strength = 0.098
 shader_parameter/wave_frequency = 2.219
@@ -64,7 +65,7 @@ scale_max = 2.5
 turbulence_enabled = true
 turbulence_noise_strength = 4.02
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dy33k"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1jyys"]
 transparency = 1
 albedo_color = Color(0.192157, 0.694118, 0.698039, 0.482353)
 metallic = 0.2
@@ -72,9 +73,10 @@ metallic_specular = 1.0
 roughness = 0.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_dy33k"]
-material = SubResource("StandardMaterial3D_dy33k")
+material = SubResource("StandardMaterial3D_1jyys")
 
 [node name="TestingDepth" type="Node3D"]
+script = ExtResource("1_hb2ql")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dy33k")
@@ -92,9 +94,10 @@ surface_material_override/0 = SubResource("ShaderMaterial_dy33k")
 [node name="Anchor" parent="." instance=ExtResource("1_mdmvh")]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, 0, 0)
 
-[node name="Player" parent="." node_paths=PackedStringArray("anchor") instance=ExtResource("2_qhbih")]
+[node name="Player" parent="." node_paths=PackedStringArray("anchor", "game_scene") instance=ExtResource("2_qhbih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.739679, -0.399348, 1.15493)
 anchor = NodePath("../Anchor")
+game_scene = NodePath("..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.4837, 0, 0)

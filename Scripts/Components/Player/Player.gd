@@ -7,11 +7,18 @@ const JUMP_VELOCITY = 7.5
 @onready var control_anchor_label := $PlayerUI/ControlAnchorLabel
 
 @export var anchor : DepthAnchor
+@export var game_scene : GameScene
+
+## Sanity
+## 		You lose sanity at a fixed rate
+##		you need to collect light/sanity to continue the journey
+@export var sanity := 5
 
 var can_control_anchor := false
 var player_offset_at_grab : Vector3
 
 func _process(delta: float) -> void:
+	check_for_fall_death() 
 	control_anchor_label.visible = can_control_anchor
 	if can_control_anchor:
 		if Input.is_action_just_pressed("control_anchor"):
@@ -41,3 +48,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		global_position = anchor.global_position + player_offset_at_grab
 	move_and_slide()
+
+func check_for_fall_death():
+	if global_position.y <= -25.0:
+		game_scene.main.start_game()
