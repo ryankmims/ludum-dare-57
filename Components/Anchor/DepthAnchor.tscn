@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cykv8euj3jmtr"]
+[gd_scene load_steps=14 format=4 uid="uid://cykv8euj3jmtr"]
 
 [ext_resource type="Script" uid="uid://edemiybpsu75" path="res://Scripts/Components/DepthAnchor/DepthAnchor.gd" id="1_qcg1t"]
 [ext_resource type="Texture2D" uid="uid://bm2qcmw0f26cu" path="res://Sprites/anchor_health_icon.png" id="2_oprqa"]
@@ -70,6 +70,9 @@ size = Vector3(2.1001, 23.6254, 9.71843)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qcg1t"]
 size = Vector3(2.1001, 23.7455, 24.294)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_oprqa"]
+size = Vector3(1, 15.0454, 34.7579)
+
 [node name="DepthAnchor" type="Node3D"]
 script = ExtResource("1_qcg1t")
 
@@ -135,5 +138,13 @@ pixel_size = 0.05
 billboard = 1
 texture = ExtResource("2_oprqa")
 
+[node name="StoppingArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StoppingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.02271, 0.700653)
+shape = SubResource("BoxShape3D_oprqa")
+
 [connection signal="body_entered" from="AnchorControlArea" to="." method="_on_anchor_control_area_body_entered"]
 [connection signal="body_exited" from="AnchorControlArea" to="." method="_on_anchor_control_area_body_exited"]
+[connection signal="body_entered" from="StoppingArea" to="." method="_on_stopping_area_body_entered"]
+[connection signal="body_exited" from="StoppingArea" to="." method="_on_stopping_area_body_exited"]

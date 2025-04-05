@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://bdgj1avkosw8o"]
+[gd_scene load_steps=19 format=3 uid="uid://bdgj1avkosw8o"]
 
 [ext_resource type="PackedScene" uid="uid://cykv8euj3jmtr" path="res://Components/Anchor/DepthAnchor.tscn" id="1_mdmvh"]
 [ext_resource type="Shader" uid="uid://b2x2s46atom5x" path="res://Prototyping/ScrollingBackgroundShader.gdshader" id="1_qhbih"]
 [ext_resource type="PackedScene" uid="uid://cc77pfnhoplrf" path="res://Components/Player/Player.tscn" id="2_qhbih"]
+[ext_resource type="Script" uid="uid://ugvpmy72xkfh" path="res://Scripts/Components/Spawner/EnvironmentSpawner.gd" id="4_dy33k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mdmvh"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -147,3 +148,7 @@ explosiveness = 0.29
 randomness = 0.15
 process_material = SubResource("ParticleProcessMaterial_qhbih")
 draw_pass_1 = SubResource("SphereMesh_dy33k")
+
+[node name="EnvironmentSpawner" type="Node3D" parent="."]
+script = ExtResource("4_dy33k")
+metadata/_custom_type_script = "uid://ugvpmy72xkfh"

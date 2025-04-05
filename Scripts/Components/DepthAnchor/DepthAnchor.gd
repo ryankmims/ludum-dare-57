@@ -7,6 +7,9 @@ const JUMP_VELOCITY = 4.5
 const ZOOM_OUT_FOV := 90.0
 const NORMAL_FOV := 75.0
 
+const MIN_ANCHOR_POSITION := -30.0
+const MAX_ANCHOR_POSITION := 30.0
+
 @onready var camera := $Camera3D
 
 @export var max_downward_velocity := 15.0
@@ -28,6 +31,7 @@ func handle_movement(delta : float):
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		global_position.x += -direction.z * SPEED
+		global_position.x = clamp(global_position.x, MIN_ANCHOR_POSITION, MAX_ANCHOR_POSITION)
 
 func handle_grab_camera(delta : float):
 	current_fov = lerp(current_fov, target_fov, camera_lerp_speed * delta)
@@ -47,3 +51,15 @@ func _on_anchor_control_area_body_entered(body: Node3D) -> void:
 func _on_anchor_control_area_body_exited(body: Node3D) -> void:
 	if body is Player:
 		body.can_control_anchor = false
+
+func _on_stopping_area_body_entered(body: Node3D) -> void:
+	if body.get_parent().get_parent() is SpawnableEntity:
+		var spawnable_entity = body.get_parent().get_parent() as SpawnableEntity
+		if spawnable_entity.can_collide:
+			spawnable_entity.environment_spawner.is_falling = false
+
+func _on_stopping_area_body_exited(body: Node3D) -> void:
+	if body.get_parent().get_parent() is SpawnableEntity:
+		var spawnable_entity = body.get_parent().get_parent() as SpawnableEntity
+		if spawnable_entity.can_collide:
+			spawnable_entity.environment_spawner.is_falling = true
