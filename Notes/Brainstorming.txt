@@ -10,3 +10,28 @@ Ideas:
 	Would be cool if you're riding the anchor
 		Run left and right on the anchor (WASD)/Controller
 		You grab the center and then pull it to the left or right (click to pull/R2)
+
+
+
+EnvironmentalSpawner:
+	Spawns everything like Mobs and Ground or Pickups/Points
+	
+	Has a property called "is_falling"
+		All spawns listen for "is_falling" and apply reverse gravity if this is true
+	
+	If a Ground entity is hit by the anchor
+		it sends up a signal to the EnvironmentalSpawner to set is_falling = false
+
+
+STORY:
+	Objective is to resurface at some point
+	
+	Call to adventure -> 
+	Find what you need/Dont get what you want -> 
+	Learn a lesson -> 
+	Return having changed ->
+	
+	The anchor is what anchors him
+		Good way? Bad way?
+		
+	You are not attached to anything, you're just free falling

@@ -27,3 +27,13 @@ offset_right = 648.0
 offset_bottom = 635.0
 text = "Control Anchor"
 label_settings = SubResource("LabelSettings_a50ic")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26574, 0)
+light_energy = 4.843
+light_indirect_energy = 5.497
+light_volumetric_fog_energy = 3.595
+light_size = 0.76
+light_specular = 3.441
+omni_range = 2.97619
+omni_attenuation = 1.541

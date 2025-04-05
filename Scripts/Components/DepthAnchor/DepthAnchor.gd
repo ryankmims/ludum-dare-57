@@ -1,7 +1,7 @@
-class_name Anchor extends CharacterBody3D
+class_name DepthAnchor extends Node3D
 
 const ANCHOR_GRAVITY_BOUY_MODIFIER := 0.235
-const SPEED = 5.0
+const SPEED = 0.069
 const JUMP_VELOCITY = 4.5
 
 const ZOOM_OUT_FOV := 90.0
@@ -20,21 +20,14 @@ func _process(delta: float) -> void:
 	handle_grab_camera(delta)
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * ANCHOR_GRAVITY_BOUY_MODIFIER * delta
-	
 	if is_grabbed:
-		var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		if direction:
-			velocity.x = -direction.z * SPEED
-		else:
-			velocity.x = move_toward(velocity.z, 0, SPEED)
+		handle_movement(delta)
 
-	if velocity.y <= -max_downward_velocity:
-		velocity.y = -max_downward_velocity
-	move_and_slide()
+func handle_movement(delta : float):
+	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		global_position.x += -direction.z * SPEED
 
 func handle_grab_camera(delta : float):
 	current_fov = lerp(current_fov, target_fov, camera_lerp_speed * delta)

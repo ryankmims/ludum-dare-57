@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdgj1avkosw8o"]
+[gd_scene load_steps=12 format=3 uid="uid://bdgj1avkosw8o"]
 
-[ext_resource type="PackedScene" uid="uid://cykv8euj3jmtr" path="res://Components/Anchor/Anchor.tscn" id="1_mdmvh"]
+[ext_resource type="PackedScene" uid="uid://cykv8euj3jmtr" path="res://Components/Anchor/DepthAnchor.tscn" id="1_mdmvh"]
 [ext_resource type="PackedScene" uid="uid://cc77pfnhoplrf" path="res://Components/Player/Player.tscn" id="2_qhbih"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mdmvh"]
@@ -11,23 +11,33 @@ ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 sky_material = SubResource("ProceduralSkyMaterial_mdmvh")
 
 [sub_resource type="Environment" id="Environment_dy33k"]
-background_mode = 2
+background_energy_multiplier = 0.4
 sky = SubResource("Sky_qhbih")
 tonemap_mode = 2
 glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0113
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_okmsv"]
-size = Vector2(47.03, 286.61)
+size = Vector2(95, 286.61)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mdmvh"]
 seed = 290
 frequency = 0.1959
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qhbih"]
+seamless = true
 noise = SubResource("FastNoiseLite_mdmvh")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dy33k"]
+albedo_color = Color(0.312466, 0.312466, 0.312466, 1)
 albedo_texture = SubResource("NoiseTexture2D_qhbih")
+
+[sub_resource type="BoxMesh" id="BoxMesh_mdmvh"]
+size = Vector3(25, 25, 25)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qhbih"]
+data = PackedVector3Array(-12.5, 12.5, 12.5, 12.5, 12.5, 12.5, -12.5, -12.5, 12.5, 12.5, 12.5, 12.5, 12.5, -12.5, 12.5, -12.5, -12.5, 12.5, 12.5, 12.5, -12.5, -12.5, 12.5, -12.5, 12.5, -12.5, -12.5, -12.5, 12.5, -12.5, -12.5, -12.5, -12.5, 12.5, -12.5, -12.5, 12.5, 12.5, 12.5, 12.5, 12.5, -12.5, 12.5, -12.5, 12.5, 12.5, 12.5, -12.5, 12.5, -12.5, -12.5, 12.5, -12.5, 12.5, -12.5, 12.5, -12.5, -12.5, 12.5, 12.5, -12.5, -12.5, -12.5, -12.5, 12.5, 12.5, -12.5, -12.5, 12.5, -12.5, -12.5, -12.5, 12.5, 12.5, 12.5, -12.5, 12.5, 12.5, 12.5, 12.5, -12.5, -12.5, 12.5, 12.5, -12.5, 12.5, -12.5, 12.5, 12.5, -12.5, -12.5, -12.5, 12.5, 12.5, -12.5, 12.5, -12.5, -12.5, -12.5, 12.5, -12.5, 12.5, 12.5, -12.5, -12.5, -12.5, -12.5, -12.5)
 
 [node name="TestingDepth" type="Node3D"]
 
@@ -35,11 +45,11 @@ albedo_texture = SubResource("NoiseTexture2D_qhbih")
 environment = SubResource("Environment_dy33k")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-shadow_enabled = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_energy = 0.106
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.0195116, -0.99981, 0, 0.99981, -0.0195116, 0, 0, -12.3334)
+transform = Transform3D(1, 0, 0, 0, -0.0195116, -0.99981, 0, 0.99981, -0.0195116, 0, 0, -19.5203)
 mesh = SubResource("PlaneMesh_okmsv")
 surface_material_override/0 = SubResource("StandardMaterial3D_dy33k")
 
@@ -49,3 +59,12 @@ transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-0
 [node name="Player" parent="." node_paths=PackedStringArray("anchor") instance=ExtResource("2_qhbih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.739679, -0.399348, 1.15493)
 anchor = NodePath("../Anchor")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.4837, 0, 0)
+mesh = SubResource("BoxMesh_mdmvh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qhbih")
