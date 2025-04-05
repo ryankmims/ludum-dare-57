@@ -80,7 +80,6 @@ material = SubResource("StandardMaterial3D_dy33k")
 environment = SubResource("Environment_dy33k")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 light_color = Color(0.12725, 0.636425, 0.794976, 1)
 light_energy = 0.24
 
