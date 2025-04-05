@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cykv8euj3jmtr"]
+[gd_scene load_steps=16 format=4 uid="uid://cykv8euj3jmtr"]
 
 [ext_resource type="Script" uid="uid://edemiybpsu75" path="res://Scripts/Components/DepthAnchor/DepthAnchor.gd" id="1_qcg1t"]
 [ext_resource type="Texture2D" uid="uid://bm2qcmw0f26cu" path="res://Sprites/anchor_health_icon.png" id="2_oprqa"]
@@ -73,9 +73,6 @@ height = 21.6492
 radius = 2.88841
 height = 52.9035
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8f761"]
-size = Vector3(30.8608, 2.3374, 28.0618)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_ioskg"]
 size = Vector3(2.1001, 23.6254, 9.71843)
 
@@ -124,19 +121,10 @@ shape = SubResource("CapsuleShape3D_e5ix0")
 debug_color = Color(0.974891, 0, 0.423456, 0.42)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshAndStoppingAreaContainer"]
-visible = false
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="MeshAndStoppingAreaContainer/StaticBody3D"]
 transform = Transform3D(0.999999, 0.00172787, -4.36194e-08, -0.00172787, 0.999999, 4.25107e-08, 4.36928e-08, -4.24352e-08, 1, -0.540073, 13.3832, 0.529541)
 shape = SubResource("CapsuleShape3D_ovunm")
-
-[node name="FrontBox2" type="CollisionShape3D" parent="MeshAndStoppingAreaContainer/StaticBody3D"]
-transform = Transform3D(0.027468, 0.999623, 0, -0.999623, 0.027468, 0, 0, 0, 1, 10.6992, 8.84325, 0.0404077)
-shape = SubResource("BoxShape3D_8f761")
-
-[node name="FrontBox" type="CollisionShape3D" parent="MeshAndStoppingAreaContainer/StaticBody3D"]
-transform = Transform3D(0.027468, 0.999623, 0, -0.999623, 0.027468, 0, 0, 0, 1, -12.7157, 8.19984, 0.0404066)
-shape = SubResource("BoxShape3D_8f761")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshAndStoppingAreaContainer/StaticBody3D"]
 transform = Transform3D(0.024709, 0.999623, -0.0119981, -0.899218, 0.027468, 0.436637, 0.436802, 9.98497e-10, 0.899558, -0.0854759, -4.37874, 11.7437)

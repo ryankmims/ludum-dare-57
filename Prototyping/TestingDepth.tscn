@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bdgj1avkosw8o"]
+[gd_scene load_steps=21 format=3 uid="uid://bdgj1avkosw8o"]
 
 [ext_resource type="Script" uid="uid://d1xnv0tn1j1r5" path="res://Prototyping/GameScene.gd" id="1_hb2ql"]
 [ext_resource type="PackedScene" uid="uid://cykv8euj3jmtr" path="res://Components/Anchor/DepthAnchor.tscn" id="1_mdmvh"]
@@ -74,6 +74,9 @@ roughness = 0.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_dy33k"]
 material = SubResource("StandardMaterial3D_1jyys")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hb2ql"]
+size = Vector3(85.88, 41.61, 1)
 
 [node name="TestingDepth" type="Node3D"]
 script = ExtResource("1_hb2ql")
@@ -154,3 +157,15 @@ draw_pass_1 = SubResource("SphereMesh_dy33k")
 [node name="EnvironmentSpawner" type="Node3D" parent="."]
 script = ExtResource("4_dy33k")
 metadata/_custom_type_script = "uid://ugvpmy72xkfh"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.95856)
+shape = SubResource("BoxShape3D_hb2ql")
+debug_color = Color(0.515891, 0.462391, 0.286219, 0.42)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.11488)
+shape = SubResource("BoxShape3D_hb2ql")
+debug_color = Color(0.515891, 0.462391, 0.286219, 0.42)

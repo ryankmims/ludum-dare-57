@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cr5i8tki4tiet"]
+
+[ext_resource type="Texture2D" uid="uid://cpon6j08ru5hu" path="res://Models/Platforms/Platforms_BasePlatformTexture.png" id="1_set2t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bl7m2"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.025
+
+[resource]
+next_pass = SubResource("StandardMaterial3D_bl7m2")
+diffuse_mode = 3
+albedo_texture = ExtResource("1_set2t")
+metallic_specular = 0.0
