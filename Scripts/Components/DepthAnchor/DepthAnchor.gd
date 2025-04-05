@@ -3,6 +3,8 @@ class_name DepthAnchor extends Node3D
 const ANCHOR_GRAVITY_BOUY_MODIFIER := 0.235
 const SPEED = 0.069
 const JUMP_VELOCITY = 4.5
+const MAX_ROTATION := 0.3 
+const ROTATION_LERP_SPEED := 5.0 
 
 const ZOOM_OUT_FOV := 90.0
 const NORMAL_FOV := 75.0
@@ -11,6 +13,7 @@ const MIN_ANCHOR_POSITION := -30.0
 const MAX_ANCHOR_POSITION := 30.0
 
 @onready var camera := $Camera3D
+@onready var anchor_mesh := $AnchorMesh
 
 @export var max_downward_velocity := 15.0
 @export var camera_lerp_speed: float = 5.0
@@ -18,6 +21,7 @@ const MAX_ANCHOR_POSITION := 30.0
 var is_grabbed := false
 var current_fov = NORMAL_FOV
 var target_fov = NORMAL_FOV
+var target_rotation := 0.0
 
 func _process(delta: float) -> void:
 	handle_grab_camera(delta)
@@ -25,6 +29,10 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if is_grabbed:
 		handle_movement(delta)
+	else:
+		target_rotation = 0.0
+		
+	anchor_mesh.rotation.x = lerp(anchor_mesh.rotation.x, target_rotation, ROTATION_LERP_SPEED * delta)
 
 func handle_movement(delta : float):
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -32,7 +40,11 @@ func handle_movement(delta : float):
 	if direction:
 		global_position.x += -direction.z * SPEED
 		global_position.x = clamp(global_position.x, MIN_ANCHOR_POSITION, MAX_ANCHOR_POSITION)
-
+		
+		target_rotation = +direction.z * MAX_ROTATION
+	else:
+		target_rotation = 0.0
+		
 func handle_grab_camera(delta : float):
 	current_fov = lerp(current_fov, target_fov, camera_lerp_speed * delta)
 	camera.fov = current_fov
