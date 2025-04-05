@@ -23,3 +23,10 @@ shape = SubResource("ConcavePolygonShape3D_vw4mq")
 
 [node name="YourLight" parent="." instance=ExtResource("2_q6iil")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0152531, 2.2472, 0.0598316)
+
+[node name="CollisionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
+shape = SubResource("ConcavePolygonShape3D_vw4mq")
+
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]

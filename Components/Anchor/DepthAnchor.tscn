@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://cykv8euj3jmtr"]
+[gd_scene load_steps=15 format=4 uid="uid://cykv8euj3jmtr"]
 
 [ext_resource type="Script" uid="uid://edemiybpsu75" path="res://Scripts/Components/DepthAnchor/DepthAnchor.gd" id="1_qcg1t"]
 [ext_resource type="Texture2D" uid="uid://bm2qcmw0f26cu" path="res://Sprites/anchor_health_icon.png" id="2_oprqa"]
+[ext_resource type="Script" uid="uid://dnt83nudyp4w8" path="res://Components/Anchor/StoppingArea.gd" id="3_h7gq6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07yle"]
 resource_name = "Material"
@@ -140,6 +141,7 @@ billboard = 1
 texture = ExtResource("2_oprqa")
 
 [node name="StoppingArea" type="Area3D" parent="."]
+script = ExtResource("3_h7gq6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StoppingArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.02271, 0.700653)
