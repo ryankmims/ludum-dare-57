@@ -2,6 +2,7 @@ class_name DepthAnchor extends Node3D
 
 const ANCHOR_GRAVITY_BOUY_MODIFIER := 0.235
 const SPEED = 0.069
+const HALTED_SPEED_MODIFER := 0.25
 const JUMP_VELOCITY = 4.5
 const MAX_ROTATION := 0.3 
 const ROTATION_LERP_SPEED := 5.0 
@@ -25,6 +26,7 @@ var target_fov = NORMAL_FOV
 var target_rotation := 0.0
 
 var halt_rotation := false
+var current_speed_modifier := 1.0
 
 func _process(delta: float) -> void:
 	handle_grab_camera(delta)
@@ -37,12 +39,15 @@ func _physics_process(delta: float) -> void:
 	
 	if !halt_rotation:
 		mesh_and_stopping_area_container.rotation.x = lerp(mesh_and_stopping_area_container.rotation.x, target_rotation, ROTATION_LERP_SPEED * delta)
+		current_speed_modifier = 1.0
+	else:
+		current_speed_modifier = HALTED_SPEED_MODIFER
 
 func handle_movement(delta : float):
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		global_position.x += -direction.z * SPEED
+		global_position.x += -direction.z * SPEED * current_speed_modifier
 		global_position.x = clamp(global_position.x, MIN_ANCHOR_POSITION, MAX_ANCHOR_POSITION)
 		
 		target_rotation = +direction.z * MAX_ROTATION
