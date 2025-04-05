@@ -1,5 +1,20 @@
 Theme: Depths
 
+TODO:
+	[ ] Player model
+		- has a little hat with a light
+	[ ] As you descend, change lighting and fog
+	[ ] Platform diversity
+	[ ] Refined collision
+	[ ] Enemies
+		- models for the enemies
+	[ ] Sound/Music
+
+NPCS:
+	Sanity Draining Mobs
+	Dark Monsters
+	Orb Eaters
+
 Ideas:
 	Achor falling down and down and down [why?]
 	
