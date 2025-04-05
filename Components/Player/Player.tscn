@@ -1,3 +1,29 @@
-[gd_scene format=3 uid="uid://cc77pfnhoplrf"]
+[gd_scene load_steps=5 format=3 uid="uid://cc77pfnhoplrf"]
 
-[node name="Player" type="Node3D"]
+[ext_resource type="Script" uid="uid://kau50xchdu4r" path="res://Scripts/Components/Player/Player.gd" id="1_a50ic"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8qe71"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cyqth"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a50ic"]
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_a50ic")
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_8qe71")
+
+[node name="PlayerCollider" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_cyqth")
+
+[node name="PlayerUI" type="Node2D" parent="."]
+
+[node name="ControlAnchorLabel" type="Label" parent="PlayerUI"]
+offset_left = 530.0
+offset_top = 585.0
+offset_right = 648.0
+offset_bottom = 635.0
+text = "Control Anchor"
+label_settings = SubResource("LabelSettings_a50ic")
