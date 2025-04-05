@@ -40,7 +40,7 @@ func handle_spawning():
 	var now = Time.get_unix_time_from_system()
 	if should_spawn:
 		var random_spawn_x = randf_range(MIN_SPAWN_X, MAX_SPAWN_X)
-		var base_ground_instance = overhang_platform_scene.instantiate() as SpawnableEntity
+		var base_ground_instance = base_ground_scene.instantiate() as SpawnableEntity
 		base_ground_instance.environment_spawner = self
 		add_child(base_ground_instance)
 		base_ground_instance.global_position = Vector3(random_spawn_x, -20.0, 0.0)

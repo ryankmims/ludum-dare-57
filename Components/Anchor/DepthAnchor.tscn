@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cykv8euj3jmtr"]
+[gd_scene load_steps=19 format=4 uid="uid://cykv8euj3jmtr"]
 
 [ext_resource type="Script" uid="uid://edemiybpsu75" path="res://Scripts/Components/DepthAnchor/DepthAnchor.gd" id="1_qcg1t"]
 [ext_resource type="Texture2D" uid="uid://bm2qcmw0f26cu" path="res://Sprites/anchor_health_icon.png" id="2_oprqa"]
@@ -81,6 +81,25 @@ size = Vector3(2.1001, 23.7455, 24.294)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qcg1t"]
 radius = 6.26501
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oprqa"]
+lifetime_randomness = 0.15
+inherit_velocity_ratio = 0.156
+spread = 62.117
+damping_max = 6.552
+scale_min = 0.5
+scale_max = 1.25
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5ix0"]
+transparency = 1
+albedo_color = Color(0.545098, 0.533333, 0.423529, 0.32549)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xox5n"]
+material = SubResource("StandardMaterial3D_e5ix0")
+radius = 5.0
+height = 10.0
 
 [node name="DepthAnchor" type="Node3D"]
 script = ExtResource("1_qcg1t")
@@ -168,6 +187,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.7247, 4.65883)
 pixel_size = 0.05
 billboard = 1
 texture = ExtResource("2_oprqa")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.46831, 0.633337)
+visible = false
+emitting = false
+lifetime = 1.9
+speed_scale = 1.89
+explosiveness = 0.1
+randomness = 0.08
+process_material = SubResource("ParticleProcessMaterial_oprqa")
+draw_pass_1 = SubResource("SphereMesh_xox5n")
 
 [connection signal="body_entered" from="MeshAndStoppingAreaContainer/StoppingArea" to="." method="_on_stopping_area_body_entered"]
 [connection signal="body_exited" from="MeshAndStoppingAreaContainer/StoppingArea" to="." method="_on_stopping_area_body_exited"]

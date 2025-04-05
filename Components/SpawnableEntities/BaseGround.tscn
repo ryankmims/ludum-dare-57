@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cq1byr45p0y1a"]
+[gd_scene load_steps=15 format=4 uid="uid://cq1byr45p0y1a"]
 
 [ext_resource type="Script" uid="uid://bpnvy1v5gabxe" path="res://Scripts/Components/SpawnableEntities/SpawnableEntity.gd" id="1_vw4mq"]
 [ext_resource type="Texture2D" uid="uid://cpon6j08ru5hu" path="res://Models/Platforms/Platforms_BasePlatformTexture.png" id="2_eqdc5"]
@@ -51,9 +51,38 @@ data = PackedVector3Array(-0.6826, 0.7189, -0.6826, -0.9823, 1.124, 0, -0.9386, 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_eqdc5"]
 data = PackedVector3Array(1.605, 0, 1, -1.605, 0, 1, 1.605, 0, -1, -1.605, 0, 1, -1.605, 0, -1, 1.605, 0, -1)
 
-[node name="BaseGround" type="Node3D"]
+[sub_resource type="Curve" id="Curve_eqdc5"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0.0252525, 0.351236), 0.0, 0.0, 0, 0, Vector2(1, 0.112958), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_842gm"]
+curve = SubResource("Curve_eqdc5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lshau"]
+radial_velocity_min = -5.00002
+radial_velocity_max = 4.99998
+gravity = Vector3(0, 9.8, 0)
+scale_min = 0.5
+scale_over_velocity_min = 0.5
+scale_over_velocity_max = 1.0
+scale_over_velocity_curve = SubResource("CurveTexture_842gm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kl0jj"]
+cull_mode = 2
+albedo_color = Color(0.490145, 0.469278, 0.300361, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5idfb"]
+material = SubResource("StandardMaterial3D_kl0jj")
+size = Vector2(6.42, 3.23)
+orientation = 0
+
+[node name="BaseGround" type="Node3D" node_paths=PackedStringArray("particles_collection")]
 script = ExtResource("1_vw4mq")
 can_collide = true
+particles_collection = NodePath("ParticlesCollection")
 
 [node name="BasePlatform" type="MeshInstance3D" parent="."]
 transform = Transform3D(-5.44409e-08, 0, -3.11144, 0, 1, 0, 1.24546, 0, -1.36006e-07, 0, 0, 0)
@@ -74,3 +103,30 @@ shape = SubResource("ConcavePolygonShape3D_eqdc5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0152531, 2.2472, 0.0598316)
 
 [node name="Platforms" type="Node3D" parent="."]
+
+[node name="ParticlesCollection" type="Node3D" parent="."]
+visible = false
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="ParticlesCollection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60288, 0)
+lifetime = 1.32
+speed_scale = 0.5
+explosiveness = 0.15
+process_material = SubResource("ParticleProcessMaterial_lshau")
+draw_pass_1 = SubResource("PlaneMesh_5idfb")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="ParticlesCollection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3965, 1.32106, 0)
+lifetime = 1.32
+speed_scale = 0.5
+explosiveness = 0.15
+process_material = SubResource("ParticleProcessMaterial_lshau")
+draw_pass_1 = SubResource("PlaneMesh_5idfb")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="ParticlesCollection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25959, 1.20903, 0)
+lifetime = 1.32
+speed_scale = 0.5
+explosiveness = 0.15
+process_material = SubResource("ParticleProcessMaterial_lshau")
+draw_pass_1 = SubResource("PlaneMesh_5idfb")
