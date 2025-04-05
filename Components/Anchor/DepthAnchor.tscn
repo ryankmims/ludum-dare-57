@@ -69,9 +69,6 @@ height = 31.5278
 radius = 3.09308
 height = 21.6492
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_qcg1t"]
-radius = 6.26501
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ovunm"]
 radius = 2.88841
 height = 52.9035
@@ -84,6 +81,9 @@ size = Vector3(2.1001, 23.6254, 9.71843)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qcg1t"]
 size = Vector3(2.1001, 23.7455, 24.294)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qcg1t"]
+radius = 6.26501
 
 [node name="DepthAnchor" type="Node3D"]
 script = ExtResource("1_qcg1t")
@@ -123,6 +123,33 @@ transform = Transform3D(1, 0, 0, 0, 0.00940724, -0.999956, 0, 0.999956, 0.009407
 shape = SubResource("CapsuleShape3D_e5ix0")
 debug_color = Color(0.974891, 0, 0.423456, 0.42)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshAndStoppingAreaContainer"]
+visible = false
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="MeshAndStoppingAreaContainer/StaticBody3D"]
+transform = Transform3D(0.999999, 0.00172787, -4.36194e-08, -0.00172787, 0.999999, 4.25107e-08, 4.36928e-08, -4.24352e-08, 1, -0.540073, 13.3832, 0.529541)
+shape = SubResource("CapsuleShape3D_ovunm")
+
+[node name="FrontBox2" type="CollisionShape3D" parent="MeshAndStoppingAreaContainer/StaticBody3D"]
+transform = Transform3D(0.027468, 0.999623, 0, -0.999623, 0.027468, 0, 0, 0, 1, 10.6992, 8.84325, 0.0404077)
+shape = SubResource("BoxShape3D_8f761")
+
+[node name="FrontBox" type="CollisionShape3D" parent="MeshAndStoppingAreaContainer/StaticBody3D"]
+transform = Transform3D(0.027468, 0.999623, 0, -0.999623, 0.027468, 0, 0, 0, 1, -12.7157, 8.19984, 0.0404066)
+shape = SubResource("BoxShape3D_8f761")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshAndStoppingAreaContainer/StaticBody3D"]
+transform = Transform3D(0.024709, 0.999623, -0.0119981, -0.899218, 0.027468, 0.436637, 0.436802, 9.98497e-10, 0.899558, -0.0854759, -4.37874, 11.7437)
+shape = SubResource("BoxShape3D_ioskg")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshAndStoppingAreaContainer/StaticBody3D"]
+transform = Transform3D(0.0247158, 0.999623, 0.0119843, -0.899462, 0.027468, -0.436135, -0.436299, -1.56222e-08, 0.899802, -0.215446, -4.59482, -10.9115)
+shape = SubResource("BoxShape3D_ioskg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshAndStoppingAreaContainer/StaticBody3D"]
+transform = Transform3D(0.027468, 0.999623, 0, -0.999623, 0.027468, 0, 0, 0, 1, -0.0987835, -6.65395, 0.125889)
+shape = SubResource("BoxShape3D_qcg1t")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.36949e-08, -0.027468, -0.999623, -1.20067e-09, 0.999623, -0.027468, 1, -1.11022e-16, -4.37114e-08, -53.4423, 0.485123, 1.56688)
 current = true
@@ -131,33 +158,6 @@ current = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnchorControlArea"]
 shape = SubResource("SphereShape3D_qcg1t")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-visible = false
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.999999, 0.00172787, -4.36194e-08, -0.00172787, 0.999999, 4.25107e-08, 4.36928e-08, -4.24352e-08, 1, -0.540073, 13.3832, 0.529541)
-shape = SubResource("CapsuleShape3D_ovunm")
-
-[node name="FrontBox2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.027468, 0.999623, 0, -0.999623, 0.027468, 0, 0, 0, 1, 10.6992, 8.84325, 0.0404077)
-shape = SubResource("BoxShape3D_8f761")
-
-[node name="FrontBox" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.027468, 0.999623, 0, -0.999623, 0.027468, 0, 0, 0, 1, -12.7157, 8.19984, 0.0404066)
-shape = SubResource("BoxShape3D_8f761")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.024709, 0.999623, -0.0119981, -0.899218, 0.027468, 0.436637, 0.436802, 9.98497e-10, 0.899558, -0.0854759, -4.37874, 11.7437)
-shape = SubResource("BoxShape3D_ioskg")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.0247158, 0.999623, 0.0119843, -0.899462, 0.027468, -0.436135, -0.436299, -1.56222e-08, 0.899802, -0.215446, -4.59482, -10.9115)
-shape = SubResource("BoxShape3D_ioskg")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.027468, 0.999623, 0, -0.999623, 0.027468, 0, 0, 0, 1, -0.0987835, -6.65395, 0.125889)
-shape = SubResource("BoxShape3D_qcg1t")
 
 [node name="AnchorHealthBar" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.09641, 0)

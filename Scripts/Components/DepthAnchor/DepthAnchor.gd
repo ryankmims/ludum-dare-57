@@ -24,6 +24,8 @@ var current_fov = NORMAL_FOV
 var target_fov = NORMAL_FOV
 var target_rotation := 0.0
 
+var halt_rotation := false
+
 func _process(delta: float) -> void:
 	handle_grab_camera(delta)
 
@@ -32,8 +34,9 @@ func _physics_process(delta: float) -> void:
 		handle_movement(delta)
 	else:
 		target_rotation = 0.0
-		
-	mesh_and_stopping_area_container.rotation.x = lerp(mesh_and_stopping_area_container.rotation.x, target_rotation, ROTATION_LERP_SPEED * delta)
+	
+	if !halt_rotation:
+		mesh_and_stopping_area_container.rotation.x = lerp(mesh_and_stopping_area_container.rotation.x, target_rotation, ROTATION_LERP_SPEED * delta)
 
 func handle_movement(delta : float):
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -68,6 +71,7 @@ func _on_stopping_area_body_entered(body: Node3D) -> void:
 	if body.get_parent().get_parent() is SpawnableEntity:
 		var spawnable_entity = body.get_parent().get_parent() as SpawnableEntity
 		if spawnable_entity.can_collide:
+			halt_rotation = true
 			spawnable_entity.environment_spawner.is_falling = false
 			spawnable_entity.take_damage(1)
 
@@ -76,3 +80,4 @@ func _on_stopping_area_body_exited(body: Node3D) -> void:
 		var spawnable_entity = body.get_parent().get_parent() as SpawnableEntity
 		if spawnable_entity.can_collide:
 			spawnable_entity.environment_spawner.is_falling = true
+			halt_rotation = false
