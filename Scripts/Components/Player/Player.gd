@@ -46,6 +46,9 @@ func _process(delta: float) -> void:
 	if dead:
 		game_scene.main.go_insane()
 	
+	if anchor.distance_traveled >= 50.0:
+		game_scene.main.win_game()
+	
 	check_for_fall_death() 
 	handle_light(delta)
 	

@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8cpa0bcqtl7k"]
+
+[ext_resource type="Script" uid="uid://pba2y4yt3go7" path="res://Utilities/InsanityScreen.gd" id="1_d7rls"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wj15g"]
+
+[node name="WinScreen" type="Node3D"]
+script = ExtResource("1_d7rls")
+
+[node name="WinScreenUI" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="WinScreenUI"]
+offset_left = -29.0
+offset_top = -11.0
+offset_right = 1937.0
+offset_bottom = 1101.0
+color = Color(0.0177324, 0.0177324, 0.0177324, 1)
+
+[node name="Label" type="Label" parent="WinScreenUI"]
+offset_left = 874.0
+offset_top = 527.0
+offset_right = 1038.0
+offset_bottom = 550.0
+text = "You made it through!"
+label_settings = SubResource("LabelSettings_wj15g")
+
+[node name="Button" type="Button" parent="WinScreenUI"]
+offset_left = 877.0
+offset_top = 565.0
+offset_right = 1036.0
+offset_bottom = 610.0
+text = "Play Again!"
+
+[connection signal="pressed" from="WinScreenUI/Button" to="." method="_on_button_pressed"]

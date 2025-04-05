@@ -15,6 +15,8 @@ const MAX_ANCHOR_POSITION := 30.0
 
 const DAMAGE_INTERVAL := 0.85  # Time in seconds between consecutive damage applications
 
+const DISTANCE_GAIN_RATE := 1.0  
+
 @onready var camera := $Camera3D
 @onready var anchor_mesh := $MeshAndStoppingAreaContainer/AnchorMesh
 @onready var mesh_and_stopping_area_container := $MeshAndStoppingAreaContainer
@@ -33,6 +35,8 @@ var current_speed_modifier := 1.0
 var damage_timer := 0.0
 var current_platform = null
 
+var distance_traveled := 0.0
+
 func _process(delta: float) -> void:
 	handle_grab_camera(delta)
 
@@ -47,6 +51,10 @@ func _physics_process(delta: float) -> void:
 		current_speed_modifier = 1.0
 	else:
 		current_speed_modifier = HALTED_SPEED_MODIFER
+	
+	if !halt_rotation:
+		distance_traveled += DISTANCE_GAIN_RATE * delta * current_speed_modifier
+		print("Distance traveled: %d" % int(distance_traveled))
 
 func handle_movement(delta : float):
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
