@@ -2,7 +2,11 @@ class_name EnvironmentSpawner extends Node3D
 
 @onready var base_ground_scene := preload("res://Components/SpawnableEntities/BaseGround.tscn")
 
-const FLOAT_SPEED := 1.5
+@export var float_speed := 1.5
+
+const BASE_FLOAT_SPEED := 1.5
+const SPEED_UP_MODIFIER := 2.0
+const SPEED_DOWN_MODIFIER := 0.5
 
 const MAX_SPAWN_X := 30.0
 const MIN_SPAWN_X := -30.0
@@ -21,6 +25,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_falling:
 		handle_spawning()
+		if get_parent().get_node("Player").anchor.is_grabbed:
+			if Input.is_action_pressed("move_up"):
+				float_speed = BASE_FLOAT_SPEED * SPEED_DOWN_MODIFIER
+			elif Input.is_action_pressed("move_down"):
+				float_speed = BASE_FLOAT_SPEED * SPEED_UP_MODIFIER
+			else:
+				float_speed = BASE_FLOAT_SPEED
+		else:
+			float_speed = BASE_FLOAT_SPEED
 
 func handle_spawning():
 	var now = Time.get_unix_time_from_system()

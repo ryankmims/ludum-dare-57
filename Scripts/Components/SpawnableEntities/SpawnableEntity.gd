@@ -13,7 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if environment_spawner.is_falling:
-		global_position.y += environment_spawner.FLOAT_SPEED * delta
+		global_position.y += environment_spawner.float_speed * delta
 
 #func _on_collision_area_body_entered(body: Node3D) -> void:
 	#if body.name == "StaticBody3D" and body.get_parent().name == "Anchor":
