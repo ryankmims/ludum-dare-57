@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	if global_position.y >= 45.0:
+	if global_position.y >= 23.0:
 		queue_free()
 	
 	if environment_spawner.is_falling:

@@ -69,7 +69,7 @@ func flip_particles():
 			particle_effect.global_position.y = -particle_effect.global_position.y - 5.0
 
 var kelp_spawn_timer := 0.0
-var kelp_spawn_interval := 0.5
+var kelp_spawn_interval := 0.25
 
 func handle_kelp_spawn():
 	var now = Time.get_unix_time_from_system()
@@ -84,7 +84,7 @@ func spawn_kelp(x_position : float, rotation_in_degrees : float):
 	add_child(kelp_scene_instance)
 	kelp_scene_instance.global_position.x = x_position
 	kelp_scene_instance.global_position.y = -45.0 + randf_range(0.025, 0.5)
-	kelp_scene_instance.global_position.z = randf_range(-10.0, 5.0)
+	kelp_scene_instance.global_position.z = randf_range(-17.0, 5.0)
 	kelp_scene_instance.rotation.y = deg_to_rad(rotation_in_degrees)
 
 func handle_spawning():

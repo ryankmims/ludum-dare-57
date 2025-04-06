@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://bdgj1avkosw8o"]
+[gd_scene load_steps=23 format=3 uid="uid://bdgj1avkosw8o"]
 
 [ext_resource type="Script" uid="uid://d1xnv0tn1j1r5" path="res://Prototyping/GameScene.gd" id="1_hb2ql"]
 [ext_resource type="PackedScene" uid="uid://cykv8euj3jmtr" path="res://Components/Anchor/DepthAnchor.tscn" id="1_mdmvh"]
 [ext_resource type="Shader" uid="uid://b2x2s46atom5x" path="res://Prototyping/ScrollingBackgroundShader.gdshader" id="1_qhbih"]
 [ext_resource type="PackedScene" uid="uid://cc77pfnhoplrf" path="res://Components/Player/Player.tscn" id="2_qhbih"]
 [ext_resource type="Script" uid="uid://ugvpmy72xkfh" path="res://Scripts/Components/Spawner/EnvironmentSpawner.gd" id="4_dy33k"]
+[ext_resource type="PackedScene" uid="uid://bneolhna48ubo" path="res://Components/Decoration/Kelp.tscn" id="6_1jyys"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mdmvh"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -178,3 +179,709 @@ debug_color = Color(0.515891, 0.462391, 0.286219, 0.42)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.11488)
 shape = SubResource("BoxShape3D_hb2ql")
 debug_color = Color(0.515891, 0.462391, 0.286219, 0.42)
+
+[node name="InitialKelpSpawns" type="Node3D" parent="."]
+
+[node name="Kelp" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 2.78459, 10.4304)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp2" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 3.77376, 7.22423)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp3" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 3.77376, 4.00348)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp4" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 0.359872, 4.00348)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp5" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 0.359872, 8.24857)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp6" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -1.66131, 8.24857)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp7" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -1.66131, 9.32329)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp8" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -1.66131, -0.0334005)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp9" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -1.66131, -3.16207)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp10" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 7.65629, -1.44296)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp11" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 12.4262, 0.834654)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp12" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 12.4262, 5.23753)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp13" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 12.4262, 8.59836)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp14" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -12.3389, 8.59836)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp15" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -12.3389, 5.56036)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp16" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -8.96213, 3.68175)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp17" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -8.96213, 0.97995)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp18" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -8.96213, -2.73586)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp19" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -8.96213, -6.99641)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp20" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 6.25995, -6.99641)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp21" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 11.3877, -6.99641)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp22" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 11.3877, -4.31777)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp23" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -9.9061, 7.88415)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp24" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -8.91692, 4.67799)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp25" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -8.91692, 1.45723)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp26" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -12.3308, 1.45723)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp27" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -12.3308, 5.70232)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp28" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -14.352, 5.70232)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp29" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -14.352, 6.77705)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp30" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -14.352, -2.57964)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp31" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -14.352, -5.70831)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp32" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -5.03439, -3.9892)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp33" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -0.264519, -1.71159)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp34" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -0.264519, 2.69129)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp35" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -0.264519, 6.05212)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp36" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -25.0296, 6.05212)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp37" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -25.0296, 3.01411)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp38" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -21.6528, 1.1355)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp39" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -21.6528, -1.56629)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp40" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -21.6528, -5.2821)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp41" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -21.6528, -9.54265)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp42" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -7.54836, -9.54265)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp43" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -1.30301, -9.54265)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp44" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -1.30301, -6.86401)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp45" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.3345, 2.78459, -9.83442)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp46" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.974, 3.77376, -6.6486)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp47" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.6118, 3.77376, -3.44828)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp48" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.6118, 0.359872, -3.44828)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp49" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.0891, 0.359872, -7.66644)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp50" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.0891, -1.66131, -7.66644)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp51" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.21, -1.66131, -8.73434)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp52" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1578, -1.66131, 0.562994)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp53" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8059, -1.66131, 3.67182)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp54" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.9993, 7.6563, 1.96361)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp55" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.2554, 12.4262, -0.299554)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp56" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.7505, 12.4262, -4.6745)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp57" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.1285, 12.4262, -8.01401)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp58" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.1285, -12.3389, -8.01401)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp59" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.7868, -12.3389, -4.99528)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp60" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5756, -8.96213, -3.12858)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp61" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.2717, -8.96213, -0.443928)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp62" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8539, -8.96213, 3.24831)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp63" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3747, -8.96213, 7.48183)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp64" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3747, 5.14233, 7.48183)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp65" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3747, 11.3877, 7.48183)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp66" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.676, 11.3877, 4.82018)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp67" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2387, -9.9061, -7.28277)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp68" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.8782, -8.91692, -4.09694)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp69" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.516, -8.91692, -0.896615)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp70" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.516, -12.3308, -0.896615)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp71" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.9934, -12.3308, -5.11478)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp72" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.9934, -14.352, -5.11478)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp73" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.1142, -14.352, -6.18268)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp74" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.062, -14.352, 3.11465)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp75" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.7102, -14.352, 6.22348)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp76" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.9035, -5.03439, 4.51527)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp77" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1596, -0.264519, 2.25211)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp78" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.6548, -0.264519, -2.12284)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp79" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.0327, -0.264519, -5.46235)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp80" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.0327, -25.0296, -5.46235)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp81" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.6911, -25.0296, -2.44362)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp82" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.4798, -21.6528, -0.576925)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp83" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.176, -21.6528, 2.10773)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp84" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.7581, -21.6528, 5.79997)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp85" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.279, -21.6528, 10.0335)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp86" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.279, -7.54836, 10.0335)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp87" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.279, -1.30301, 10.0335)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp88" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5802, -1.30301, 7.37184)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp89" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 2.78459, 2.23357)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp90" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 3.77376, -0.9726)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp91" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 3.77376, -4.19335)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp92" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 0.359872, -4.19335)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp93" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 0.359872, 0.0517373)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp94" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -1.66131, 0.0517373)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp95" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -1.66131, 1.12646)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp96" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -1.66131, -8.23023)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp97" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -1.66131, -11.3589)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp98" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 7.65629, -9.63979)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp99" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 12.4262, -7.36218)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp100" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 12.4262, -2.9593)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp101" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 12.4262, 0.401532)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp102" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -12.3389, 0.401532)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp103" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -12.3389, -2.63647)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp104" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -8.96213, -4.51508)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp105" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -8.96213, -7.21688)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp106" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -8.96213, -10.9327)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp107" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, -8.96213, -15.1932)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp108" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 6.25995, -15.1932)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp109" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 11.3877, -15.1932)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp110" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.208, 11.3877, -12.5146)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp111" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -9.9061, -0.312676)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp112" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -8.91692, -3.51884)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp113" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -8.91692, -6.7396)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp114" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -12.3308, -6.7396)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp115" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -12.3308, -2.49451)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp116" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -14.352, -2.49451)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp117" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -14.352, -1.41978)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp118" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -14.352, -10.7765)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp119" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -14.352, -13.9051)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp120" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -5.03439, -12.186)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp121" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -0.264519, -9.90842)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp122" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -0.264519, -5.50554)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp123" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -0.264519, -2.14471)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp124" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -25.0296, -2.14471)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp125" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -25.0296, -5.18272)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp126" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -21.6528, -7.06133)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp127" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -21.6528, -9.76312)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp128" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -21.6528, -13.4789)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp129" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -21.6528, -17.7395)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp130" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -7.54836, -17.7395)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp131" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -1.30301, -17.7395)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp132" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -35.3998, -1.30301, -15.0608)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp133" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.3345, 2.78459, -18.0313)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp134" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.974, 3.77376, -14.8454)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp135" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.6118, 3.77376, -11.6451)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp136" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.6118, 0.359872, -11.6451)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp137" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.0891, 0.359872, -15.8633)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp138" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.0891, -1.66131, -15.8633)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp139" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.21, -1.66131, -16.9312)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp140" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1578, -1.66131, -7.63384)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp141" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8059, -1.66131, -4.52501)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp142" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.9993, 7.6563, -6.23322)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp143" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.2554, 12.4262, -8.49638)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp144" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.7505, 12.4262, -12.8713)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp145" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.1285, 12.4262, -16.2108)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp146" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.1285, -12.3389, -16.2108)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp147" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.7868, -12.3389, -13.1921)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp148" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5756, -8.96213, -11.3254)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp149" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.2717, -8.96213, -8.64076)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp150" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8539, -8.96213, -4.94852)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp151" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3747, -8.96213, -0.714995)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp152" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3747, 5.14233, -0.714995)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp153" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3747, 11.3877, -0.714995)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp154" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.676, 11.3877, -3.37665)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp155" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2387, -9.9061, -15.4796)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp156" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.8782, -8.91692, -12.2938)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp157" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.516, -8.91692, -9.09344)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp158" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.516, -12.3308, -9.09344)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp159" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.9934, -12.3308, -13.3116)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp160" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.9934, -14.352, -13.3116)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp161" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.1142, -14.352, -14.3795)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp162" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.062, -14.352, -5.08217)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp163" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.7102, -14.352, -1.97335)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp164" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.9035, -5.03439, -3.68156)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp165" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1596, -0.264519, -5.94472)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp166" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.6548, -0.264519, -10.3197)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp167" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.0327, -0.264519, -13.6592)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp168" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.0327, -25.0296, -13.6592)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp169" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.6911, -25.0296, -10.6404)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp170" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.4798, -21.6528, -8.77375)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp171" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.176, -21.6528, -6.0891)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp172" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.7581, -21.6528, -2.39686)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp173" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.279, -21.6528, 1.83667)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp174" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.279, -7.54836, 1.83667)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp175" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.279, -1.30301, 1.83667)
+environment_spawner = NodePath("../../EnvironmentSpawner")
+
+[node name="Kelp176" parent="InitialKelpSpawns" node_paths=PackedStringArray("environment_spawner") instance=ExtResource("6_1jyys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5802, -1.30301, -0.824988)
+environment_spawner = NodePath("../../EnvironmentSpawner")

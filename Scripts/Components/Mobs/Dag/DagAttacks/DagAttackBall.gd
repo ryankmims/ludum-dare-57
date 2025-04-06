@@ -1,13 +1,17 @@
 class_name DagBallAttack extends Node3D
 
+@onready var flying_sound := preload("res://Audio/SoundEffects/darkness_ball_sound_flying.wav")
+
+@onready var audio_player := $AudioStreamPlayer3D
+
 @export var environment_spawner : EnvironmentSpawner
 
 var direction : Vector3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	audio_player.stream = flying_sound
+	audio_player.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -20,5 +24,13 @@ func _process(delta: float) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:
-		body.sanity -= 0.25
-	pass # Replace with function body.
+		print_debug("hit player")
+		body.sanity -= 1.5
+		
+		visible = false
+		
+		audio_player.stream = flying_sound
+		audio_player.play()
+		
+		await get_tree().create_timer(2.0).timeout
+		queue_free()
