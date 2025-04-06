@@ -1,5 +1,7 @@
 class_name SpawnableEntity extends Node3D
 
+@onready var sound_player_drop_scene := preload("res://Components/Utilities/SoundPlayerDrop.tscn")
+
 @export var environment_spawner : EnvironmentSpawner
 @export var can_collide := false
 @export var health: int = 3
@@ -33,4 +35,7 @@ func take_damage(amount: int) -> void:
 		break_platform()
 		
 func break_platform() -> void:
+	var sound_player_drop_instance = sound_player_drop_scene.instantiate() as SoundPlayerDrop
+	get_tree().root.add_child(sound_player_drop_instance)
+	sound_player_drop_instance.global_position = global_position
 	queue_free()

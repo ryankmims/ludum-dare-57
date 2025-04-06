@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://6d0tuhgnt150"]
+
+[ext_resource type="Script" uid="uid://bikn6ia7scrm5" path="res://Scripts/Components/Utilities/SoundPlayerDrop.gd" id="1_pv4df"]
+
+[node name="SoundPlayerDrop" type="Node3D"]
+script = ExtResource("1_pv4df")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

@@ -17,6 +17,8 @@ const JUMP_VELOCITY = 7.5
 @export var anchor : DepthAnchor
 @export var game_scene : GameScene
 
+@export var winning_distance := 200
+
 var walking := false
 
 ## Sanity
@@ -46,7 +48,7 @@ func _process(delta: float) -> void:
 	if dead:
 		game_scene.main.go_insane()
 	
-	if anchor.distance_traveled >= 50.0:
+	if anchor.distance_traveled >= winning_distance:
 		game_scene.main.win_game()
 	
 	check_for_fall_death() 

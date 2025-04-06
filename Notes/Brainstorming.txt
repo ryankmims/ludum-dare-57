@@ -1,17 +1,19 @@
 Theme: Depths
 
 TODO:
-	[ ] Starting counting "levels" based on... something?
+	[ ] Improve the beginning
+	[ ] Improve the ending
+	[ X ] Starting counting "levels" based on... something?
 		How many leagues under the sea?
 		When do you resurface?
 	[ ] Fighting?
 	[ X ] Dragging damage (must do ASAP)
 	[ X ] Player model
 		- has a little hat with a light
-	[ ] As you descend, change lighting and fog
+	[ X ] As you descend, change lighting and fog
 		[ X ] Win condition : reach a certain distance
-	[ ~ ] Platform diversity
-	[ ~ ] Refined collision
+	[ X ] Platform diversity
+	[ X ] Refined collision
 	[ ] Enemies
 		- models for the enemies
 	[ ~ ] Sound/Music

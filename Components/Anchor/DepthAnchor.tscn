@@ -199,6 +199,8 @@ randomness = 0.08
 process_material = SubResource("ParticleProcessMaterial_oprqa")
 draw_pass_1 = SubResource("SphereMesh_xox5n")
 
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
+
 [connection signal="body_entered" from="MeshAndStoppingAreaContainer/StoppingArea" to="." method="_on_stopping_area_body_entered"]
 [connection signal="body_exited" from="MeshAndStoppingAreaContainer/StoppingArea" to="." method="_on_stopping_area_body_exited"]
 [connection signal="body_entered" from="AnchorControlArea" to="." method="_on_anchor_control_area_body_entered"]

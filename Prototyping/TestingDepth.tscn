@@ -14,11 +14,11 @@ ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 sky_material = SubResource("ProceduralSkyMaterial_mdmvh")
 
 [sub_resource type="Environment" id="Environment_dy33k"]
+background_energy_multiplier = 2.0
 sky = SubResource("Sky_dy33k")
 tonemap_mode = 2
 glow_enabled = true
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.0359
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_okmsv"]
 size = Vector2(95, 286.61)
@@ -98,8 +98,9 @@ transform = Transform3D(1, 0, 0, 0, -0.0195116, -0.99981, 0, 0.99981, -0.0195116
 mesh = SubResource("PlaneMesh_okmsv")
 surface_material_override/0 = SubResource("ShaderMaterial_dy33k")
 
-[node name="Anchor" parent="." instance=ExtResource("1_mdmvh")]
+[node name="Anchor" parent="." node_paths=PackedStringArray("environment_spawner") instance=ExtResource("1_mdmvh")]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, 0, 0)
+environment_spawner = NodePath("../EnvironmentSpawner")
 
 [node name="Player" parent="." node_paths=PackedStringArray("anchor", "game_scene") instance=ExtResource("2_qhbih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.739679, -0.399348, 1.15493)
@@ -159,8 +160,9 @@ randomness = 0.15
 process_material = SubResource("ParticleProcessMaterial_qhbih")
 draw_pass_1 = SubResource("SphereMesh_dy33k")
 
-[node name="EnvironmentSpawner" type="Node3D" parent="."]
+[node name="EnvironmentSpawner" type="Node3D" parent="." node_paths=PackedStringArray("world_environment")]
 script = ExtResource("4_dy33k")
+world_environment = NodePath("../WorldEnvironment")
 metadata/_custom_type_script = "uid://ugvpmy72xkfh"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
