@@ -15,14 +15,16 @@ func _ready() -> void:
 	
 	var roll = randi_range(0, 5)
 	if roll == 0:
-		var dag_scene_instance = dag_scene.instantiate() as Dag
-		dag_scene_instance.spawnable_entity = self
-		add_child(dag_scene_instance)
-		roll = randi_range(0, 5)
-		if roll == 0:
-			dag_scene_instance.global_position = spawn_one.global_position
-		else:
-			dag_scene_instance.global_position = spawn_two.global_position
+		if environment_spawner.distance_traveled >= LEVEL_TO_START_SPAWNING:
+			if environment_spawner.distance_traveled < environment_spawner.MIDDLE_DISTANCE:
+				var dag_scene_instance = dag_scene.instantiate() as Dag
+				dag_scene_instance.spawnable_entity = self
+				add_child(dag_scene_instance)
+				roll = randi_range(0, 5)
+				if roll == 0:
+					dag_scene_instance.global_position = spawn_one.global_position
+				else:
+					dag_scene_instance.global_position = spawn_two.global_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

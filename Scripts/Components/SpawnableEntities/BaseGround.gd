@@ -6,7 +6,8 @@ class_name BaseGround extends SpawnableEntity
 func _ready() -> void:
 	super()
 	if environment_spawner.distance_traveled >= LEVEL_TO_START_SPAWNING:
-		handle_spawns()
+		if environment_spawner.distance_traveled < environment_spawner.MIDDLE_DISTANCE:
+			handle_spawns()
 
 func handle_spawns():
 	var roll = randi_range(0, 5)

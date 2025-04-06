@@ -67,34 +67,39 @@ func flip_particles():
 
 func handle_spawning():
 	var now = Time.get_unix_time_from_system()
-	if should_spawn:
-		var random_spawn_x = randf_range(MIN_SPAWN_X, MAX_SPAWN_X)
-		var ground_spawn
-		var roll = randi_range(0, 4)
-		#var roll = 0
-		match roll:
-			0:
-				ground_spawn = base_ground_scene.instantiate() as SpawnableEntity
-			1:
-				ground_spawn = overhang_platform_scene.instantiate() as SpawnableEntity
-			2:
-				ground_spawn = long_hanging_platform_scene.instantiate() as SpawnableEntity
-			_:
-				ground_spawn = base_ground_scene.instantiate() as SpawnableEntity
-		ground_spawn.environment_spawner = self
-		ground_spawn.player = player
-		add_child(ground_spawn)
-		ground_spawn.global_position = Vector3(random_spawn_x, -20.0, 0.0)
-		if distance_traveled >= MIDDLE_DISTANCE:
-			ground_spawn.rotate_x(deg_to_rad(180.0))
-		spawn_timer = now
-		should_spawn = false
-	else:
-		if (now - spawn_timer) >= spawn_interval:
-			should_spawn = true
+	if distance_traveled <= 170:
+		if should_spawn:
+			var random_spawn_x = randf_range(MIN_SPAWN_X, MAX_SPAWN_X)
+			var ground_spawn
+			var roll = randi_range(0, 4)
+			#var roll = 0
+			match roll:
+				0:
+					ground_spawn = base_ground_scene.instantiate() as SpawnableEntity
+				1:
+					ground_spawn = overhang_platform_scene.instantiate() as SpawnableEntity
+				2:
+					ground_spawn = long_hanging_platform_scene.instantiate() as SpawnableEntity
+				_:
+					ground_spawn = base_ground_scene.instantiate() as SpawnableEntity
+			ground_spawn.environment_spawner = self
+			ground_spawn.player = player
+			add_child(ground_spawn)
+			ground_spawn.global_position = Vector3(random_spawn_x, -20.0, 0.0)
+			if distance_traveled >= MIDDLE_DISTANCE:
+				ground_spawn.rotate_x(deg_to_rad(180.0))
+			spawn_timer = now
+			should_spawn = false
+		else:
+			if (now - spawn_timer) >= spawn_interval:
+				should_spawn = true
 
 func handle_world_environment(_delta : float) -> void:
-	var t = clamp(distance_traveled / MIDDLE_DISTANCE, 0.0, 2.0)
-	t = 1.0 - abs(t - 1.0)  # This mirrors the lerp effect
-	world_environment.environment.volumetric_fog_density = lerp(BASE_VOLUMETRIC_FOG_DENSITY, MAX_VOLUMETRIC_FOG_DENSITY, t)
-	world_environment.environment.background_energy_multiplier = lerp(BASE_ENERGY_MULTIPLIER, MIN_ENERGY_MULTIPLIER, t)
+	if distance_traveled <= 195:
+		var t = clamp(distance_traveled / MIDDLE_DISTANCE, 0.0, 2.0)
+		t = 1.0 - abs(t - 1.0)  # This mirrors the lerp effect
+		world_environment.environment.volumetric_fog_density = lerp(BASE_VOLUMETRIC_FOG_DENSITY, MAX_VOLUMETRIC_FOG_DENSITY, t)
+		world_environment.environment.background_energy_multiplier = lerp(BASE_ENERGY_MULTIPLIER, MIN_ENERGY_MULTIPLIER, t)
+	else:
+		world_environment.environment.background_energy_multiplier += 5.0 * _delta
+	

@@ -145,11 +145,9 @@ func _process(delta: float) -> void:
 	handle_depths()
 
 func handle_music():
-	
 	await music_player.finished
 	
-	if changed_to_theme_music:
-		#change back
+	if anchor.distance_traveled >= 110.0 && changed_to_theme_music:
 		music_player.stream = core_ambient_theme
 	
 	if anchor.distance_traveled >= 90.0 && !changed_to_theme_music:
