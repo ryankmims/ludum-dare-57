@@ -2,6 +2,7 @@ class_name Main extends Node
 
 @onready var main_menu_scene := preload("res://Utilities/MainMenu.tscn")
 @onready var game_scene := preload("res://Prototyping/TestingDepth.tscn")
+@onready var poem_screen := preload("res://Utilities/PoemScreen.tscn")
 @onready var insanity_screen := preload("res://Utilities/InsanityScreen.tscn")
 @onready var win_screen := preload("res://Utilities/WinScreen.tscn")
 
@@ -23,6 +24,9 @@ func start_game():
 
 func go_insane():
 	change_scene(insanity_screen)
+
+func start_poem():
+	change_scene(poem_screen)
 
 func win_game():
 	change_scene(win_screen)

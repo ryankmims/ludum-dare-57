@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cc77pfnhoplrf"]
+[gd_scene load_steps=27 format=4 uid="uid://cc77pfnhoplrf"]
 
 [ext_resource type="Script" uid="uid://kau50xchdu4r" path="res://Scripts/Components/Player/Player.gd" id="1_a50ic"]
 [ext_resource type="Texture2D" uid="uid://b65qyi3fccacs" path="res://Models/Man/Man_HelmetTexture.png" id="2_8qe71"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c64uviijly4fu" path="res://Sprites/left_mouse_button_icon.png" id="4_mo2m5"]
 [ext_resource type="AudioStream" uid="uid://dyssge3pksyip" path="res://Audio/Music/core_ambient_theme.wav" id="4_n5pqa"]
 [ext_resource type="AudioStream" uid="uid://bpn58k7052kd4" path="res://Audio/Vocals/my_light_is_fading.wav" id="5_71y7e"]
+[ext_resource type="Texture2D" uid="uid://drg04og5w0mea" path="res://Sprites/space_bar_icon.png" id="5_aycwo"]
+[ext_resource type="Texture2D" uid="uid://l68xoug6b6qf" path="res://Sprites/wasd_keys.png" id="5_eorbh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wikpc"]
 resource_name = "Material"
@@ -1529,7 +1531,48 @@ label_settings = SubResource("LabelSettings_a50ic")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="JumpSprite" type="Sprite2D" parent="PlayerUI"]
+position = Vector2(1016.73, 800)
+texture = ExtResource("5_aycwo")
+
+[node name="ControlAnchorLabel" type="Label" parent="PlayerUI/JumpSprite"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -91.0
+offset_top = -37.0
+offset_right = 27.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Jump"
+label_settings = SubResource("LabelSettings_a50ic")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MovementSprite" type="Sprite2D" parent="PlayerUI"]
+position = Vector2(857.79, 800)
+texture = ExtResource("5_eorbh")
+
+[node name="MoveLabel" type="Label" parent="PlayerUI/MovementSprite"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -91.0
+offset_top = -37.0
+offset_right = 27.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Move"
+label_settings = SubResource("LabelSettings_a50ic")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BlackoutScreen" type="ColorRect" parent="PlayerUI"]
+visible = false
 offset_left = -32.0
 offset_top = -19.0
 offset_right = 1955.0

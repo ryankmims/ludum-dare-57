@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb7rok8xg3ixj"]
+[gd_scene load_steps=4 format=3 uid="uid://bb7rok8xg3ixj"]
 
 [ext_resource type="Script" uid="uid://pba2y4yt3go7" path="res://Utilities/InsanityScreen.gd" id="1_bib8b"]
+[ext_resource type="AudioStream" uid="uid://d0s8iace06v8s" path="res://Audio/Music/mustnt_let_the_light_die_out.wav" id="2_r3qcd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wj15g"]
 
@@ -17,11 +18,11 @@ offset_bottom = 1101.0
 color = Color(0.0177324, 0.0177324, 0.0177324, 1)
 
 [node name="Label" type="Label" parent="InsanityScreenUI"]
-offset_left = 887.0
-offset_top = 527.0
-offset_right = 1015.0
-offset_bottom = 550.0
-text = "You went insane"
+offset_left = 836.0
+offset_top = 526.0
+offset_right = 1081.0
+offset_bottom = 549.0
+text = "You mustn't let the light die out"
 label_settings = SubResource("LabelSettings_wj15g")
 
 [node name="Button" type="Button" parent="InsanityScreenUI"]
@@ -30,5 +31,10 @@ offset_top = 565.0
 offset_right = 1036.0
 offset_bottom = 610.0
 text = "Retry"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="InsanityScreenUI"]
+stream = ExtResource("2_r3qcd")
+volume_db = 6.0
+autoplay = true
 
 [connection signal="pressed" from="InsanityScreenUI/Button" to="." method="_on_button_pressed"]

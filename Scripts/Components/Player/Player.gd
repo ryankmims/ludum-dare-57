@@ -9,6 +9,9 @@ const JUMP_VELOCITY = 7.5
 @onready var left_mouse_button_sprite := $PlayerUI/LeftMouseButtonSprite
 @onready var control_anchor_label := $PlayerUI/LeftMouseButtonSprite/ControlAnchorLabel
 
+@onready var movement_sprite := $PlayerUI/MovementSprite
+@onready var jump_sprite := $PlayerUI/JumpSprite
+
 @onready var blackout_screen := $PlayerUI/BlackoutScreen
 
 @onready var player_mesh := $Man
@@ -18,8 +21,6 @@ const JUMP_VELOCITY = 7.5
 
 @onready var music_player := $MusicPlayer
 @onready var voice_player := $VoicePlayer
-
-
 
 @export var anchor : DepthAnchor
 @export var game_scene : GameScene
@@ -56,7 +57,12 @@ var set_win_timer := false
 
 var won := false
 
+var has_moved := false
+var has_grabbed := false
+var has_jumped := false
+
 func _ready() -> void:
+	blackout_screen.visible = true
 	music_player.play()
 
 func _process(delta: float) -> void:
@@ -124,6 +130,7 @@ func _process(delta: float) -> void:
 			else:
 				animation_player.play("Idle")
 		
+	handle_control_tutorial()
 
 func handle_music():
 	await music_player.finished
@@ -153,11 +160,13 @@ func _physics_process(delta: float) -> void:
 
 	if not anchor.is_grabbed:
 		if Input.is_action_just_pressed("jump") and is_on_floor():
+			has_jumped = true
 			velocity.y = JUMP_VELOCITY
 
 		var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if direction:
+			has_moved = true
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
 			walking = true
@@ -198,4 +207,7 @@ func handle_low_health(delta: float = 0.0) -> void:
 		flicker_target = lerp(flicker_target, 0.0, delta * 0.5)
 	else:
 		flicker_target = 0.0
-	
+
+func handle_control_tutorial():
+	jump_sprite.visible = !has_jumped
+	movement_sprite.visible = !has_moved
