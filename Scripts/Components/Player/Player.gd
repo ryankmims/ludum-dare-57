@@ -16,6 +16,8 @@ const JUMP_VELOCITY =  8
 @onready var seventh_reverse := preload("res://Audio/Vocals/07_rev.wav")
 @onready var eighth_reverse := preload("res://Audio/Vocals/08_rev.wav")
 
+@onready var my_light_is_fading := preload("res://Audio/Vocals/my_light_is_fading.wav")
+
 @onready var player_ui := $PlayerUI
 @onready var left_mouse_button_sprite := $PlayerUI/LeftMouseButtonSprite
 @onready var control_anchor_label := $PlayerUI/LeftMouseButtonSprite/ControlAnchorLabel
@@ -29,6 +31,7 @@ const JUMP_VELOCITY =  8
 @onready var animation_player := $Man/AnimationPlayer
 
 @onready var headlamp_light := $Man/Armature/Skeleton3D/BoneAttachment3D/HeadlampLight
+@onready var omni_light := $Man/Armature/Skeleton3D/BoneAttachment3D/OmniLight3D
 
 @onready var music_player := $MusicPlayer
 @onready var voice_player := $VoicePlayer
@@ -86,6 +89,11 @@ func _process(delta: float) -> void:
 	handle_low_health(delta)
 	
 	if dead:
+		headlamp_light.light_energy = 0.0
+		headlamp_light.light_volumetric_fog_energy = 0.0
+		omni_light.light_energy = 0.0
+		omni_light.omni_range = 0.0
+		
 		if !set_death_timer:
 			death_fade_timer = Time.get_unix_time_from_system()
 			set_death_timer = true
@@ -162,10 +170,13 @@ func handle_light(delta: float) -> void:
 	
 	var sanity_factor = (sanity / 5.0) * (sanity / 5.0) * (sanity / 5.0)
 	var base_energy = 15 * sanity_factor
+	var omni_base_energy = 0.5 * sanity_factor
 	
 	headlamp_light.light_energy = max(1.0, base_energy + flicker_target)
 	headlamp_light.light_volumetric_fog_energy = max(1.0, base_energy + flicker_target)
-	#headlamp_light.omni_range = lerp(0.5, 2.5, sanity_factor)
+	
+	omni_light.light_energy = max(0.2, omni_base_energy + flicker_target)
+	omni_light.omni_range = lerp(0.5, 2.5, sanity_factor)
 	
 	if sanity <= 0.0:
 		dead = true
@@ -211,6 +222,7 @@ func handle_low_health(delta: float = 0.0) -> void:
 		# Voice warning
 		if now - sanity_warning_timer >= sanity_warning_interval:
 			sanity_warning_timer = now
+			voice_player.stream = my_light_is_fading
 			voice_player.play()
 		
 		# Light flickering effect
