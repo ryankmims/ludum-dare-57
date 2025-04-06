@@ -4,6 +4,8 @@ class_name EnvironmentSpawner extends Node3D
 @onready var overhang_platform_scene := preload("res://Components/SpawnableEntities/OverhangPlatform.tscn")
 @onready var long_hanging_platform_scene := preload("res://Components/SpawnableEntities/LongHangingPlatform.tscn")
 
+@onready var kelp_scene := preload("res://Components/Decoration/Kelp.tscn")
+
 @onready var particles := $"../Particles"
 
 @export var float_speed := 1.5
@@ -49,6 +51,7 @@ func _process(delta: float) -> void:
 	
 	if is_falling:
 		handle_spawning()
+		handle_kelp_spawn()
 		if get_parent().get_node("Player").anchor.is_grabbed:
 			if Input.is_action_pressed("move_up"):
 				float_speed = BASE_FLOAT_SPEED * SPEED_DOWN_MODIFIER
@@ -64,6 +67,25 @@ func flip_particles():
 		if particle_effect is GPUParticles3D:
 			particle_effect.process_material.gravity.y = -particle_effect.process_material.gravity.y
 			particle_effect.global_position.y = -particle_effect.global_position.y - 5.0
+
+var kelp_spawn_timer := 0.0
+var kelp_spawn_interval := 0.5
+
+func handle_kelp_spawn():
+	var now = Time.get_unix_time_from_system()
+	if now - kelp_spawn_timer >= kelp_spawn_interval:
+		spawn_kelp(-32.0, 180.0)
+		spawn_kelp(32.0, 0.0)
+		kelp_spawn_timer = now
+
+func spawn_kelp(x_position : float, rotation_in_degrees : float):
+	var kelp_scene_instance = kelp_scene.instantiate() as Kelp
+	kelp_scene_instance.environment_spawner = self
+	add_child(kelp_scene_instance)
+	kelp_scene_instance.global_position.x = x_position
+	kelp_scene_instance.global_position.y = -45.0 + randf_range(0.025, 0.5)
+	kelp_scene_instance.global_position.z = randf_range(-10.0, 5.0)
+	kelp_scene_instance.rotation.y = deg_to_rad(rotation_in_degrees)
 
 func handle_spawning():
 	var now = Time.get_unix_time_from_system()
