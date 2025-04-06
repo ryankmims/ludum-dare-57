@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=4 uid="uid://cc77pfnhoplrf"]
+[gd_scene load_steps=25 format=4 uid="uid://cc77pfnhoplrf"]
 
 [ext_resource type="Script" uid="uid://kau50xchdu4r" path="res://Scripts/Components/Player/Player.gd" id="1_a50ic"]
 [ext_resource type="Texture2D" uid="uid://b65qyi3fccacs" path="res://Models/Man/Man_HelmetTexture.png" id="2_8qe71"]
 [ext_resource type="Material" uid="uid://16sxpbxeygfg" path="res://Materials/Player/PlayerMaterial.tres" id="2_cyqth"]
+[ext_resource type="Texture2D" uid="uid://c64uviijly4fu" path="res://Sprites/left_mouse_button_icon.png" id="4_mo2m5"]
 [ext_resource type="AudioStream" uid="uid://dyssge3pksyip" path="res://Audio/Music/core_ambient_theme.wav" id="4_n5pqa"]
 [ext_resource type="AudioStream" uid="uid://bpn58k7052kd4" path="res://Audio/Vocals/my_light_is_fading.wav" id="5_71y7e"]
 
@@ -1508,21 +1509,32 @@ shape = SubResource("CapsuleShape3D_cyqth")
 
 [node name="PlayerUI" type="Node2D" parent="."]
 
-[node name="ControlAnchorLabel" type="Label" parent="PlayerUI"]
+[node name="LeftMouseButtonSprite" type="Sprite2D" parent="PlayerUI"]
+position = Vector2(939, 800)
+texture = ExtResource("4_mo2m5")
+
+[node name="ControlAnchorLabel" type="Label" parent="PlayerUI/LeftMouseButtonSprite"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 881.0
-offset_top = 827.0
-offset_right = 999.0
-offset_bottom = 850.0
+offset_left = -91.0
+offset_top = -37.0
+offset_right = 27.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Grab"
 label_settings = SubResource("LabelSettings_a50ic")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BlackoutScreen" type="ColorRect" parent="PlayerUI"]
+offset_left = -32.0
+offset_top = -19.0
+offset_right = 1955.0
+offset_bottom = 1109.0
+color = Color(0, 0, 0, 1)
 
 [node name="MusicPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_n5pqa")

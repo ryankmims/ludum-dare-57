@@ -6,7 +6,10 @@ const JUMP_VELOCITY = 7.5
 @onready var ld57_anchor_down_theme := preload("res://Audio/Music/LD57_light_has_returned.wav")
 
 @onready var player_ui := $PlayerUI
-@onready var control_anchor_label := $PlayerUI/ControlAnchorLabel
+@onready var left_mouse_button_sprite := $PlayerUI/LeftMouseButtonSprite
+@onready var control_anchor_label := $PlayerUI/LeftMouseButtonSprite/ControlAnchorLabel
+
+@onready var blackout_screen := $PlayerUI/BlackoutScreen
 
 @onready var player_mesh := $Man
 @onready var animation_player := $Man/AnimationPlayer
@@ -15,6 +18,8 @@ const JUMP_VELOCITY = 7.5
 
 @onready var music_player := $MusicPlayer
 @onready var voice_player := $VoicePlayer
+
+
 
 @export var anchor : DepthAnchor
 @export var game_scene : GameScene
@@ -41,49 +46,83 @@ var flicker_target := 0.0
 var dead := false
 var changed_to_theme_music := false
 
+var death_fade_timer := 0.0
+var death_fade_interval := 5.0
+var set_death_timer := false
+
+var win_fade_timer := 0.0
+var win_fade_interval := 5.0
+var set_win_timer := false
+
+var won := false
+
 func _ready() -> void:
 	music_player.play()
 
 func _process(delta: float) -> void:
+	var now = Time.get_unix_time_from_system()
+	
+	if blackout_screen.color.a >= 0.0:
+		blackout_screen.color.a -= 0.25 * delta
+	
 	handle_music()
 	handle_low_health(delta)
 	
 	if dead:
-		game_scene.main.go_insane()
+		if !set_death_timer:
+			death_fade_timer = Time.get_unix_time_from_system()
+			set_death_timer = true
+		if now - death_fade_timer >= death_fade_interval:
+			game_scene.main.go_insane()
+		else:
+			blackout_screen.color.a += 0.5 * delta
 	
-	if anchor.distance_traveled >= winning_distance:
-		game_scene.main.win_game()
-	
-	check_for_fall_death() 
-	handle_light(delta)
-	
-	control_anchor_label.visible = can_control_anchor && !anchor.is_grabbed
-	
-	if can_control_anchor:
-		if Input.is_action_just_pressed("control_anchor"):
-			just_grabbed_anchor = true
-			print_debug("just grabbed anchor")
-			player_offset_at_grab = global_position - anchor.global_position
+	if !dead:
+		if anchor.distance_traveled >= winning_distance:
+			won = true
+			if !set_win_timer:
+				win_fade_timer = Time.get_unix_time_from_system()
+				set_win_timer = true
+			
+			if now - win_fade_timer >= win_fade_interval:
+				game_scene.main.win_game()
+			else:
+				blackout_screen.color.r = 1.0
+				blackout_screen.color.g = 1.0
+				blackout_screen.color.b = 1.0
+				blackout_screen.color.a += 0.5 * delta
 		
-		if Input.is_action_pressed("control_anchor"):
-			anchor.is_grabbed = true
-		else:
-			anchor.is_grabbed = false
-	
-	if walking && !anchor.is_grabbed:
-		animation_player.play("Walk")
-	elif anchor.is_grabbed:
-		if just_grabbed_anchor:
-			player_mesh.look_at(anchor.global_position)
-			player_mesh.rotation.x = 0.0
-			player_mesh.rotation.z = 0.0
-			animation_player.play("GrabbedBeingPulledStart")
-			await get_tree().create_timer(0.41).timeout
-			just_grabbed_anchor = false
-		else:
-			animation_player.play("GrabbedAndBeingPulled")
-	else:
-		animation_player.play("Idle")
+		if !won:
+			check_for_fall_death() 
+			handle_light(delta)
+			
+			left_mouse_button_sprite.visible = can_control_anchor && !anchor.is_grabbed
+			
+			if can_control_anchor:
+				if Input.is_action_just_pressed("control_anchor"):
+					just_grabbed_anchor = true
+					print_debug("just grabbed anchor")
+					player_offset_at_grab = global_position - anchor.global_position
+				
+				if Input.is_action_pressed("control_anchor"):
+					anchor.is_grabbed = true
+				else:
+					anchor.is_grabbed = false
+			
+			if walking && !anchor.is_grabbed:
+				animation_player.play("Walk")
+			elif anchor.is_grabbed:
+				if just_grabbed_anchor:
+					player_mesh.look_at(anchor.global_position)
+					player_mesh.rotation.x = 0.0
+					player_mesh.rotation.z = 0.0
+					animation_player.play("GrabbedBeingPulledStart")
+					await get_tree().create_timer(0.41).timeout
+					just_grabbed_anchor = false
+				else:
+					animation_player.play("GrabbedAndBeingPulled")
+			else:
+				animation_player.play("Idle")
 		
 
 func handle_music():
