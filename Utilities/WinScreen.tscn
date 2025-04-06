@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8cpa0bcqtl7k"]
+[gd_scene load_steps=5 format=3 uid="uid://b8cpa0bcqtl7k"]
 
-[ext_resource type="Script" uid="uid://pba2y4yt3go7" path="res://Utilities/InsanityScreen.gd" id="1_d7rls"]
+[ext_resource type="Script" uid="uid://d06daxp6eto1i" path="res://Utilities/WinScreen.gd" id="1_6jtdo"]
+[ext_resource type="AudioStream" uid="uid://dfg8xou65knr6" path="res://Audio/Music/LD57_win_screen.wav" id="2_6jtdo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wj15g"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7rls"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="WinScreen" type="Node3D"]
-script = ExtResource("1_d7rls")
+script = ExtResource("1_6jtdo")
 
 [node name="WinScreenUI" type="Node2D" parent="."]
 
@@ -14,7 +19,6 @@ offset_left = -29.0
 offset_top = -11.0
 offset_right = 1937.0
 offset_bottom = 1101.0
-color = Color(0.0177324, 0.0177324, 0.0177324, 1)
 
 [node name="Label" type="Label" parent="WinScreenUI"]
 offset_left = 874.0
@@ -29,6 +33,13 @@ offset_left = 877.0
 offset_top = 565.0
 offset_right = 1036.0
 offset_bottom = 610.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_d7rls")
 text = "Play Again!"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_6jtdo")
+volume_db = 6.0
+autoplay = true
 
 [connection signal="pressed" from="WinScreenUI/Button" to="." method="_on_button_pressed"]

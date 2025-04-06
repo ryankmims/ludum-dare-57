@@ -1,9 +1,13 @@
 class_name WinScreen extends Node3D
 
+@onready var audio_player := $AudioStreamPlayer2D
+
+
 @export var main : Main
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	audio_player.play()
 	pass # Replace with function body.
 
 
