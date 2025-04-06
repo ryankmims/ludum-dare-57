@@ -79,15 +79,16 @@ func handle_movement(_delta : float) -> void:
 		
 		target_rotation = +direction.z * MAX_ROTATION
 		
-		# If we're moving and colliding with a platform, apply damage if cooldown allows
+		# If we're moving and colliding with a platform
 		if current_platform != null and abs(global_position.x - prev_x) > 0.001:
+			# Set dragging state whenever we're moving against a platform
+			anchor_is_dragging = true
+			
+			# Apply damage only if cooldown allows
 			if damage_cooldown_timer <= 0:
-				anchor_is_dragging = true
 				if is_instance_valid(current_platform) and current_platform.can_collide:
 					current_platform.take_damage(1)
 					damage_cooldown_timer = DAMAGE_COOLDOWN
-			else:
-				anchor_is_dragging = false
 			
 	else:
 		target_rotation = 0.0
