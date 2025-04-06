@@ -3,6 +3,8 @@ class_name Player extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 7.5
 
+@onready var ld57_anchor_down_theme := preload("res://Audio/Music/LD57_light_has_returned.wav")
+
 @onready var player_ui := $PlayerUI
 @onready var control_anchor_label := $PlayerUI/ControlAnchorLabel
 
@@ -37,6 +39,7 @@ var flicker_timer := 0.0
 var flicker_target := 0.0
 
 var dead := false
+var changed_to_theme_music := false
 
 func _ready() -> void:
 	music_player.play()
@@ -85,6 +88,11 @@ func _process(delta: float) -> void:
 
 func handle_music():
 	await music_player.finished
+	
+	if anchor.distance_traveled >= 90.0 && !changed_to_theme_music:
+		music_player.stream = ld57_anchor_down_theme
+		changed_to_theme_music = true
+
 	music_player.play()
 
 func handle_light(delta: float) -> void:
