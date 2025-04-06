@@ -70,8 +70,8 @@ func handle_spawning():
 	if should_spawn:
 		var random_spawn_x = randf_range(MIN_SPAWN_X, MAX_SPAWN_X)
 		var ground_spawn
-		#var roll = randi_range(0, 4)
-		var roll = 0
+		var roll = randi_range(0, 4)
+		#var roll = 0
 		match roll:
 			0:
 				ground_spawn = base_ground_scene.instantiate() as SpawnableEntity

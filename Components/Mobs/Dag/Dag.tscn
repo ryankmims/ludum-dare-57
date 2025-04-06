@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bn74o1ax4ixkx"]
+[gd_scene load_steps=13 format=4 uid="uid://bn74o1ax4ixkx"]
 
 [ext_resource type="Script" uid="uid://dmeuo5c5hpa0x" path="res://Scripts/Components/Mobs/Dag/Dag.gd" id="1_qar6t"]
 
@@ -99,6 +99,16 @@ bind/20/pose = Transform3D(1, 0, 0, 0, -0.124802, -0.992182, 0, 0.992182, -0.124
 diffuse_mode = 3
 albedo_color = Color(0, 0, 0, 1)
 metallic_specular = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_qar6t"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjop0"]
+diffuse_mode = 3
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 11.84
 
 [sub_resource type="Animation" id="Animation_tdme3"]
 resource_name = "Hurl"
@@ -734,6 +744,24 @@ bone_idx = 11
 
 [node name="DagBallEmitter" type="Node3D" parent="DagMesh/Armature/Skeleton3D/BoneAttachment3D"]
 transform = Transform3D(1, 0, 1.37836e-07, -2.98023e-08, 1, 0, 1.56462e-07, 0, 1, -0.119306, 0.777182, -0.11656)
+
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="DagMesh/Armature/Skeleton3D"]
+transform = Transform3D(0.918084, -0.364785, -0.155092, -1.85884e-07, -0.391266, 0.920278, -0.396386, -0.844892, -0.359215, -0.593331, 3.40779, -1.61869)
+bone_name = "Head"
+bone_idx = 8
+
+[node name="EyesLocation" type="Node3D" parent="DagMesh/Armature/Skeleton3D/BoneAttachment3D2"]
+transform = Transform3D(1, 5.96046e-08, 0, 0, 1, 0, 1.49012e-08, -5.96046e-08, 1, -0.0774571, 0.864063, 0.367366)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DagMesh/Armature/Skeleton3D/BoneAttachment3D2/EyesLocation"]
+transform = Transform3D(1, 1.78814e-07, 1.49012e-08, 2.08616e-07, 1, -2.98023e-08, 0, -1.78814e-07, 1, -0.432553, -0.252013, -0.107147)
+mesh = SubResource("SphereMesh_qar6t")
+surface_material_override/0 = SubResource("StandardMaterial3D_sjop0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="DagMesh/Armature/Skeleton3D/BoneAttachment3D2/EyesLocation"]
+transform = Transform3D(1, 2.98023e-08, 1.49012e-08, 2.98023e-08, 1, 0, -1.49012e-08, -2.98023e-08, 1, 0.550154, -0.218594, -0.0929379)
+mesh = SubResource("SphereMesh_qar6t")
+surface_material_override/0 = SubResource("StandardMaterial3D_sjop0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DagMesh"]
 libraries = {

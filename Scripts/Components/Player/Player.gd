@@ -91,7 +91,7 @@ func handle_light(delta: float) -> void:
 	sanity -= 0.05 * delta
 	sanity = clamp(sanity, 0.0, 5.0)
 	
-	var sanity_factor = (sanity / 5.0) * (sanity / 5.0) 
+	var sanity_factor = (sanity / 5.0) * (sanity / 5.0) * (sanity / 5.0)
 	var base_energy = 1.5 * sanity_factor
 	
 	headlamp_light.light_energy = max(0.05, base_energy + flicker_target)

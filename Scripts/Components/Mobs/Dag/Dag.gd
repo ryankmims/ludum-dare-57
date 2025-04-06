@@ -13,6 +13,8 @@ var throw_interval := 5.0
 
 var throwing := false
 
+var max_distance_from_player := 25.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	throw_timer = Time.get_unix_time_from_system()
@@ -32,7 +34,7 @@ func _process(delta: float) -> void:
 		throw()
 
 func throw():
-	if !throwing:
+	if !throwing && global_position.distance_to(spawnable_entity.player.global_position) <= max_distance_from_player:
 		throwing = true
 		var dag_ball_attack_scene_instance = dag_ball_attack_scene.instantiate() as DagBallAttack
 		var offset_player_position := Vector3(spawnable_entity.player.global_position.x, spawnable_entity.player.global_position.y - 5.0, spawnable_entity.player.global_position.z)
