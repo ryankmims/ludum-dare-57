@@ -4,6 +4,17 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 7.5
 
 @onready var ld57_anchor_down_theme := preload("res://Audio/Music/LD57_light_has_returned.wav")
+@onready var core_ambient_theme := preload("res://Audio/Music/core_ambient_theme.wav")
+
+@onready var first_stanza := preload("res://Audio/Vocals/01_the_place_below_my_anchor_falls.wav")
+@onready var second_stanza := preload("res://Audio/Vocals/02_betwixt_the.wav")
+@onready var third_stanza := preload("res://Audio/Vocals/03_of_blackness_where.wav")
+@onready var fourth_stanza := preload("res://Audio/Vocals/04_it_takes_my_mind.wav")
+
+@onready var fifth_reverse := preload("res://Audio/Vocals/05_rev.wav")
+@onready var sixth_reverse := preload("res://Audio/Vocals/06_rev.wav")
+@onready var seventh_reverse := preload("res://Audio/Vocals/07_rev.wav")
+@onready var eighth_reverse := preload("res://Audio/Vocals/08_rev.wav")
 
 @onready var player_ui := $PlayerUI
 @onready var left_mouse_button_sprite := $PlayerUI/LeftMouseButtonSprite
@@ -131,9 +142,15 @@ func _process(delta: float) -> void:
 				animation_player.play("Idle")
 		
 	handle_control_tutorial()
+	handle_depths()
 
 func handle_music():
+	
 	await music_player.finished
+	
+	if changed_to_theme_music:
+		#change back
+		music_player.stream = core_ambient_theme
 	
 	if anchor.distance_traveled >= 90.0 && !changed_to_theme_music:
 		music_player.stream = ld57_anchor_down_theme
@@ -211,3 +228,56 @@ func handle_low_health(delta: float = 0.0) -> void:
 func handle_control_tutorial():
 	jump_sprite.visible = !has_jumped
 	movement_sprite.visible = !has_moved
+
+var talking = false
+
+var first_stanza_done = false
+var second_stanza_done = false
+var third_stanza_done = false
+var fourth_stanza_done = false
+
+var fifth_reverse_done = false
+var sixth_reverse_done = false
+var seventh_reverse_done = false
+var eighth_reverse_done = false
+
+func handle_depths():
+	if anchor.distance_traveled >= 20.0 && !first_stanza_done:
+		first_stanza_done = true
+		voice_player.stream = first_stanza
+		voice_player.play()
+	
+	if anchor.distance_traveled >= 40.0 && !second_stanza_done:
+		second_stanza_done = true
+		voice_player.stream = second_stanza
+		voice_player.play()
+	
+	if anchor.distance_traveled >= 60.0 && !third_stanza_done:
+		third_stanza_done = true
+		voice_player.stream = third_stanza
+		voice_player.play()
+	
+	if anchor.distance_traveled >= 80.0 && !fourth_stanza_done:
+		fourth_stanza_done = true
+		voice_player.stream = fourth_stanza
+		voice_player.play()
+	
+	if anchor.distance_traveled >= 110.0 && !fifth_reverse_done:
+		fifth_reverse_done = true
+		voice_player.stream = fifth_reverse
+		voice_player.play()
+	
+	if anchor.distance_traveled >= 130.0 && !sixth_reverse_done:
+		sixth_reverse_done = true
+		voice_player.stream = sixth_reverse
+		voice_player.play()
+	
+	if anchor.distance_traveled >= 150.0 && !seventh_reverse_done:
+		seventh_reverse_done = true
+		voice_player.stream = seventh_reverse
+		voice_player.play()
+	
+	if anchor.distance_traveled >= 170.0 && !eighth_reverse_done:
+		eighth_reverse_done = true
+		voice_player.stream = eighth_reverse
+		voice_player.play()
