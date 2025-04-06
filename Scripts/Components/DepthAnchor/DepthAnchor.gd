@@ -111,13 +111,16 @@ func handle_anchor_sounds():
 		await audio_player.finished
 		audio_playing = false
 		
-	if halt_rotation && anchor_is_dragging && !audio_playing:
-		audio_playing = true
-		audio_player.volume_db = 6.0
-		audio_player.stream = dragging_sound
-		audio_player.play()
-		await audio_player.finished
-		audio_playing = false
+	if halt_rotation && anchor_is_dragging:
+		if !audio_playing:
+			audio_playing = true
+			audio_player.volume_db = 6.0
+			audio_player.stream = dragging_sound
+			audio_player.play()
+	elif !halt_rotation || !anchor_is_dragging:
+		if audio_playing && audio_player.stream == dragging_sound:
+			audio_player.stop()
+			audio_playing = false
 
 func _on_anchor_control_area_body_entered(body: Node3D) -> void:
 	print_debug(body)
