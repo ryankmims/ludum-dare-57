@@ -24,6 +24,8 @@ const DISTANCE_GAIN_RATE := 1.0
 @onready var anchor_mesh := $MeshAndStoppingAreaContainer/AnchorMesh
 @onready var mesh_and_stopping_area_container := $MeshAndStoppingAreaContainer
 
+@onready var dev_level_ui_label := $DevUI/Level
+
 @onready var audio_player := $AudioPlayer
 
 @export var max_downward_velocity := 15.0
@@ -52,6 +54,8 @@ func _process(delta: float) -> void:
 	environment_spawner.distance_traveled = distance_traveled
 	handle_grab_camera(delta)
 	handle_anchor_sounds()
+	
+	dev_level_ui_label.text = "Current Level: " + str(distance_traveled)
 
 func _physics_process(delta: float) -> void:
 	if damage_cooldown_timer > 0:

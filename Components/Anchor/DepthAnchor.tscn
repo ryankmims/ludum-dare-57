@@ -201,6 +201,15 @@ draw_pass_1 = SubResource("SphereMesh_xox5n")
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
 
+[node name="DevUI" type="Node2D" parent="."]
+
+[node name="Level" type="Label" parent="DevUI"]
+offset_left = 23.0
+offset_top = 1043.0
+offset_right = 132.0
+offset_bottom = 1066.0
+text = "Current Level:"
+
 [connection signal="body_entered" from="MeshAndStoppingAreaContainer/StoppingArea" to="." method="_on_stopping_area_body_entered"]
 [connection signal="body_exited" from="MeshAndStoppingAreaContainer/StoppingArea" to="." method="_on_stopping_area_body_exited"]
 [connection signal="body_entered" from="AnchorControlArea" to="." method="_on_anchor_control_area_body_entered"]

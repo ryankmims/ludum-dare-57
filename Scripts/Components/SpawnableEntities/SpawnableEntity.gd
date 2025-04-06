@@ -4,6 +4,8 @@ class_name SpawnableEntity extends Node3D
 
 @onready var sound_player_drop_scene := preload("res://Components/Utilities/SoundPlayerDrop.tscn")
 
+const LEVEL_TO_START_SPAWNING := 30
+
 @export var environment_spawner : EnvironmentSpawner
 @export var can_collide := false
 @export var health: int = 3
