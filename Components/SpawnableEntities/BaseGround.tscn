@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://cq1byr45p0y1a"]
+[gd_scene load_steps=16 format=4 uid="uid://cq1byr45p0y1a"]
 
-[ext_resource type="Script" uid="uid://bpnvy1v5gabxe" path="res://Scripts/Components/SpawnableEntities/SpawnableEntity.gd" id="1_vw4mq"]
+[ext_resource type="Script" uid="uid://bxmssaqpagkgo" path="res://Scripts/Components/SpawnableEntities/BaseGround.gd" id="1_842gm"]
 [ext_resource type="Texture2D" uid="uid://cpon6j08ru5hu" path="res://Models/Platforms/Platforms_BasePlatformTexture.png" id="2_eqdc5"]
 [ext_resource type="PackedScene" uid="uid://gr3d5j88v24h" path="res://Components/Collectable/YourLight.tscn" id="2_q6iil"]
 [ext_resource type="Material" uid="uid://cr5i8tki4tiet" path="res://Materials/Platforms/BasePlatformMaterial.tres" id="3_842gm"]
+[ext_resource type="PackedScene" uid="uid://bn74o1ax4ixkx" path="res://Components/Mobs/Dag/Dag.tscn" id="5_842gm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxytf"]
 resource_name = "PlatformMaterial"
@@ -87,7 +88,7 @@ size = Vector2(6.42, 3.23)
 orientation = 0
 
 [node name="BaseGround" type="Node3D" node_paths=PackedStringArray("particles_collection")]
-script = ExtResource("1_vw4mq")
+script = ExtResource("1_842gm")
 can_collide = true
 particles_collection = NodePath("ParticlesCollection")
 
@@ -107,7 +108,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45916, 0)
 shape = SubResource("ConcavePolygonShape3D_eqdc5")
 
 [node name="YourLight" parent="." instance=ExtResource("2_q6iil")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0152531, 2.2472, 0.0598316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8111, 2.2472, 0.0598316)
 
 [node name="Platforms" type="Node3D" parent="."]
 
@@ -134,3 +135,7 @@ speed_scale = 0.5
 explosiveness = 0.15
 process_material = SubResource("ParticleProcessMaterial_lshau")
 draw_pass_1 = SubResource("PlaneMesh_5idfb")
+
+[node name="Dag" parent="." node_paths=PackedStringArray("spawnable_entity") instance=ExtResource("5_842gm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0563911, 1.67184, 0.348449)
+spawnable_entity = NodePath("..")

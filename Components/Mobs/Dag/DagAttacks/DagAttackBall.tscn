@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://c25ufgthvea3k"]
+
+[ext_resource type="Script" uid="uid://814wuvjknhal" path="res://Scripts/Components/Mobs/Dag/DagAttacks/DagAttackBall.gd" id="1_6moy7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_6moy7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0srvy"]
+cull_mode = 1
+shading_mode = 0
+grow = true
+grow_amount = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_duiex"]
+next_pass = SubResource("StandardMaterial3D_0srvy")
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6moy7"]
+radius = 0.75
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6moy7"]
+size = Vector3(1.35, 1.38, 18.13)
+
+[node name="DagAttackBall" type="Node3D"]
+script = ExtResource("1_6moy7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_6moy7")
+surface_material_override/0 = SubResource("StandardMaterial3D_duiex")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_6moy7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_6moy7")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

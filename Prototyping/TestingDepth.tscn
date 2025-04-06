@@ -160,9 +160,10 @@ randomness = 0.15
 process_material = SubResource("ParticleProcessMaterial_qhbih")
 draw_pass_1 = SubResource("SphereMesh_dy33k")
 
-[node name="EnvironmentSpawner" type="Node3D" parent="." node_paths=PackedStringArray("world_environment")]
+[node name="EnvironmentSpawner" type="Node3D" parent="." node_paths=PackedStringArray("world_environment", "player")]
 script = ExtResource("4_dy33k")
 world_environment = NodePath("../WorldEnvironment")
+player = NodePath("../Player")
 metadata/_custom_type_script = "uid://ugvpmy72xkfh"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

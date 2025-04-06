@@ -8,6 +8,8 @@ class_name SpawnableEntity extends Node3D
 
 @export var particles_collection : Node3D
 
+@export var player : Player
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if particles_collection:

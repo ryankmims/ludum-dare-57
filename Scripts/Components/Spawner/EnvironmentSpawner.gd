@@ -9,6 +9,7 @@ class_name EnvironmentSpawner extends Node3D
 @export var float_speed := 1.5
 
 @export var world_environment : WorldEnvironment
+@export var player : Player
 
 const BASE_FLOAT_SPEED := 1.5
 const SPEED_UP_MODIFIER := 2.0
@@ -69,7 +70,8 @@ func handle_spawning():
 	if should_spawn:
 		var random_spawn_x = randf_range(MIN_SPAWN_X, MAX_SPAWN_X)
 		var ground_spawn
-		var roll = randi_range(0, 4)
+		#var roll = randi_range(0, 4)
+		var roll = 0
 		match roll:
 			0:
 				ground_spawn = base_ground_scene.instantiate() as SpawnableEntity
@@ -80,6 +82,7 @@ func handle_spawning():
 			_:
 				ground_spawn = base_ground_scene.instantiate() as SpawnableEntity
 		ground_spawn.environment_spawner = self
+		ground_spawn.player = player
 		add_child(ground_spawn)
 		ground_spawn.global_position = Vector3(random_spawn_x, -20.0, 0.0)
 		if distance_traveled >= MIDDLE_DISTANCE:
