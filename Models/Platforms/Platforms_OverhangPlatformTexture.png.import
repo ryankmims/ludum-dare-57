@@ -4,9 +4,8 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://626bg24ec5nq"
 path.s3tc="res://.godot/imported/Platforms_OverhangPlatformTexture.png-999f2fef5dd3f975ee091d7bdc22c11f.s3tc.ctex"
-path.etc2="res://.godot/imported/Platforms_OverhangPlatformTexture.png-999f2fef5dd3f975ee091d7bdc22c11f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -16,7 +15,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Models/Platforms/Platforms_OverhangPlatformTexture.png"
-dest_files=["res://.godot/imported/Platforms_OverhangPlatformTexture.png-999f2fef5dd3f975ee091d7bdc22c11f.s3tc.ctex", "res://.godot/imported/Platforms_OverhangPlatformTexture.png-999f2fef5dd3f975ee091d7bdc22c11f.etc2.ctex"]
+dest_files=["res://.godot/imported/Platforms_OverhangPlatformTexture.png-999f2fef5dd3f975ee091d7bdc22c11f.s3tc.ctex"]
 
 [params]
 
