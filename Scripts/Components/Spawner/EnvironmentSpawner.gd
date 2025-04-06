@@ -90,7 +90,7 @@ func handle_spawning():
 		if (now - spawn_timer) >= spawn_interval:
 			should_spawn = true
 
-func handle_world_environment(delta):
+func handle_world_environment(_delta : float) -> void:
 	var t = clamp(distance_traveled / MIDDLE_DISTANCE, 0.0, 2.0)
 	t = 1.0 - abs(t - 1.0)  # This mirrors the lerp effect
 	world_environment.environment.volumetric_fog_density = lerp(BASE_VOLUMETRIC_FOG_DENSITY, MAX_VOLUMETRIC_FOG_DENSITY, t)

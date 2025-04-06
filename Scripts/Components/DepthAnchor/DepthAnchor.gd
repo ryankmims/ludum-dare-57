@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		current_speed_modifier = HALTED_SPEED_MODIFER
 
-func handle_movement(delta : float):
+func handle_movement(_delta : float) -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
