@@ -1,7 +1,6 @@
 Theme: Depths
 
 TODO:
-	
 	- [ ] another way to use your sanity
 	- [ ] Enemies (Crab)
 		- models for the enemies
@@ -13,9 +12,9 @@ TODO:
 		- [ ] dragging bug
 		- [ ] collecting light
 		- [ ] getting hit
-	- [ ] headlamp brightness
 	- [ ] display joypad icons if/when connected
 
+	- [ X ] headlamp brightness
 	- [ X ] Improve the beginning
 	- [ X ] Improve the ending
 	- [ X ] Starting counting "levels" based on... something?

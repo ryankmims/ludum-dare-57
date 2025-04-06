@@ -93,9 +93,9 @@ func handle_movement(_delta : float) -> void:
 				if is_instance_valid(current_platform) and current_platform.can_collide:
 					current_platform.take_damage(1)
 					damage_cooldown_timer = DAMAGE_COOLDOWN
-			
 	else:
 		target_rotation = 0.0
+		anchor_is_dragging = false
 		
 func handle_grab_camera(delta : float):
 	current_fov = lerp(current_fov, target_fov, camera_lerp_speed * delta)
