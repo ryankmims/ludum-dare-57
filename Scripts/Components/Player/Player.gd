@@ -161,10 +161,11 @@ func handle_light(delta: float) -> void:
 	sanity = clamp(sanity, 0.0, 5.0)
 	
 	var sanity_factor = (sanity / 5.0) * (sanity / 5.0) * (sanity / 5.0)
-	var base_energy = 1.5 * sanity_factor
+	var base_energy = 15 * sanity_factor
 	
-	headlamp_light.light_energy = max(0.05, base_energy + flicker_target)
-	headlamp_light.omni_range = lerp(0.5, 2.5, sanity_factor)
+	headlamp_light.light_energy = max(1.0, base_energy + flicker_target)
+	headlamp_light.light_volumetric_fog_energy = max(1.0, base_energy + flicker_target)
+	#headlamp_light.omni_range = lerp(0.5, 2.5, sanity_factor)
 	
 	if sanity <= 0.0:
 		dead = true

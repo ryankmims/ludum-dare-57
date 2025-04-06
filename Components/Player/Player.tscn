@@ -1485,15 +1485,14 @@ transform = Transform3D(1, 1.08358e-13, 2.38419e-07, 3.12505e-08, 0.991373, -0.1
 bone_name = "Head"
 bone_idx = 3
 
-[node name="HeadlampLight" type="OmniLight3D" parent="Man/Armature/Skeleton3D/BoneAttachment3D"]
-transform = Transform3D(1, 0, 9.9476e-14, 0, 1, 0, -9.9476e-14, 0, 1, 0.0128988, 1.40722, -1.21222)
-light_energy = 0.5
-light_indirect_energy = 5.497
-light_volumetric_fog_energy = 3.595
-light_size = 0.76
-light_specular = 3.441
-omni_range = 2.97619
-omni_attenuation = 1.541
+[node name="HeadlampLight" type="SpotLight3D" parent="Man/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 1.24345e-14, 5.96856e-14, -1.24345e-14, 1, 6.25849e-08, -5.96856e-14, -6.25849e-08, 1, 2.88425e-07, 1.37081, -1.20974)
+light_energy = 16.0
+light_indirect_energy = 6.989
+light_volumetric_fog_energy = 15.0
+light_size = 0.218
+spot_range = 14.994
+spot_angle = 9.67
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Man"]
 libraries = {
