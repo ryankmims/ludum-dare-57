@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody3D
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 7.5
+const JUMP_VELOCITY =  8
 
 @onready var ld57_anchor_down_theme := preload("res://Audio/Music/LD57_light_has_returned.wav")
 @onready var core_ambient_theme := preload("res://Audio/Music/core_ambient_theme.wav")
