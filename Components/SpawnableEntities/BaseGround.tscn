@@ -50,6 +50,7 @@ data = PackedVector3Array(-0.6826, 0.7189, -0.6826, -0.9823, 1.124, 0, -0.9386, 
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_eqdc5"]
 data = PackedVector3Array(1.605, 0, 1, -1.605, 0, 1, 1.605, 0, -1, -1.605, 0, 1, -1.605, 0, -1, 1.605, 0, -1)
+backface_collision = true
 
 [sub_resource type="Curve" id="Curve_eqdc5"]
 _limits = [0.0, 3.0, 0.0, 1.0]
