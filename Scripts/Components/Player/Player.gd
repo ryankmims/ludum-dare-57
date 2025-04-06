@@ -56,7 +56,7 @@ var sanity_warning_timer := 0.0
 var sanity_warning_interval := 15.0
 
 var flicker_timer := 0.0
-var flicker_target := 0.0
+var light_is_on := true
 
 var dead := false
 var changed_to_theme_music := false
@@ -165,19 +165,29 @@ func handle_music():
 	music_player.play()
 
 func handle_light(delta: float) -> void:
+	# Decrease sanity over time
 	sanity -= 0.05 * delta
 	sanity = clamp(sanity, 0.0, 5.0)
 	
-	var sanity_factor = (sanity / 5.0) * (sanity / 5.0) * (sanity / 5.0)
+	# Calculate base light intensity based on sanity
+	var sanity_factor = (sanity / 5.0) * (sanity / 5.0) * (sanity / 5.0) # Cubic falloff for more dramatic effect
 	var base_energy = 15 * sanity_factor
 	var omni_base_energy = 0.5 * sanity_factor
 	
-	headlamp_light.light_energy = max(1.0, base_energy + flicker_target)
-	headlamp_light.light_volumetric_fog_energy = max(1.0, base_energy + flicker_target)
+	# Apply light settings based on the light state
+	if !light_is_on: # Light is flickering off
+		headlamp_light.light_energy = 0.0
+		headlamp_light.light_volumetric_fog_energy = 0.0
+		omni_light.light_energy = 0.0
+	else: # Light is on (normal or during flicker on state)
+		headlamp_light.light_energy = max(1.0, base_energy)
+		headlamp_light.light_volumetric_fog_energy = max(1.0, base_energy)
+		omni_light.light_energy = max(0.2, omni_base_energy)
 	
-	omni_light.light_energy = max(0.2, omni_base_energy + flicker_target)
+	# Set light range based on sanity
 	omni_light.omni_range = lerp(0.5, 2.5, sanity_factor)
 	
+	# Check for death condition
 	if sanity <= 0.0:
 		dead = true
 
@@ -219,22 +229,24 @@ func check_for_fall_death():
 func handle_low_health(delta: float = 0.0) -> void:
 	var now = Time.get_unix_time_from_system()
 	if sanity <= 1.5:
-		# Voice warning
+		# Voice warning when sanity is low
 		if now - sanity_warning_timer >= sanity_warning_interval:
 			sanity_warning_timer = now
 			voice_player.stream = my_light_is_fading
 			voice_player.play()
 		
-		# Light flickering effect
 		flicker_timer += delta
-		if flicker_timer >= 0.1:
-			flicker_timer = 0.0
-			var flicker_intensity = 0.5 * (1.0 - sanity / 1.5)
-			flicker_target = randf_range(-flicker_intensity, flicker_intensity * 0.7)
 		
-		flicker_target = lerp(flicker_target, 0.0, delta * 0.5)
+		var flicker_interval = lerp(0.05, 0.2, sanity / 1.5)
+		
+		if flicker_timer >= flicker_interval:
+			flicker_timer = 0.0
+			
+			var flicker_probability = lerp(0.7, 0.3, sanity / 1.5)
+			
+			light_is_on = randf() >= flicker_probability
 	else:
-		flicker_target = 0.0
+		light_is_on = true
 
 func handle_control_tutorial():
 	jump_sprite.visible = !has_jumped
