@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://2o6x5p2kap03"
 path.s3tc="res://.godot/imported/Platforms_LongHangingPlatformTexture.png-068e485ac7561ad7f9c9494d067d7195.s3tc.ctex"
+path.etc2="res://.godot/imported/Platforms_LongHangingPlatformTexture.png-068e485ac7561ad7f9c9494d067d7195.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Models/Platforms/Platforms_LongHangingPlatformTexture.png"
-dest_files=["res://.godot/imported/Platforms_LongHangingPlatformTexture.png-068e485ac7561ad7f9c9494d067d7195.s3tc.ctex"]
+dest_files=["res://.godot/imported/Platforms_LongHangingPlatformTexture.png-068e485ac7561ad7f9c9494d067d7195.s3tc.ctex", "res://.godot/imported/Platforms_LongHangingPlatformTexture.png-068e485ac7561ad7f9c9494d067d7195.etc2.ctex"]
 
 [params]
 

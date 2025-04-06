@@ -1,22 +1,34 @@
 Theme: Depths
 
 TODO:
-	[ ] Improve the beginning
-	[ ] Improve the ending
-	[ X ] Starting counting "levels" based on... something?
+	
+	- [ ] another way to use your sanity
+	- [ ] Enemies (Crab)
+		- models for the enemies
+	- [ ] add particle effects to all platforms
+	- [ ] better ending writing
+	- [ ] side of wall decoration
+	- [ ] title card
+	- [ ] SFX
+		- [ ] dragging bug
+		- [ ] collecting light
+		- [ ] getting hit
+	- [ ] headlamp brightness
+	- [ ] display joypad icons if/when connected
+
+	- [ X ] Improve the beginning
+	- [ X ] Improve the ending
+	- [ X ] Starting counting "levels" based on... something?
 		How many leagues under the sea?
 		When do you resurface?
-	[ ] Fighting?
-	[ X ] Dragging damage (must do ASAP)
-	[ X ] Player model
+	- [ X ] Dragging damage (must do ASAP)
+	- [ X ] Player model
 		- has a little hat with a light
-	[ X ] As you descend, change lighting and fog
-		[ X ] Win condition : reach a certain distance
-	[ X ] Platform diversity
-	[ X ] Refined collision
-	[ ] Enemies
-		- models for the enemies
-	[ ~ ] Sound/Music
+	- [ X ] As you descend, change lighting and fog
+		- [ X ] Win condition : reach a certain distance
+	- [ X ] Platform diversity
+	- [ X ] Refined collision
+	- [ X ] Sound/Music
 
 NPCS:
 	Sanity Draining Mobs
