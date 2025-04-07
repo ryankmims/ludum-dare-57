@@ -4,6 +4,8 @@ class_name EnvironmentSpawner extends Node3D
 @onready var overhang_platform_scene := preload("res://Components/SpawnableEntities/OverhangPlatform.tscn")
 @onready var long_hanging_platform_scene := preload("res://Components/SpawnableEntities/LongHangingPlatform.tscn")
 
+@onready var eel_scene := preload("res://Components/Mobs/Eel/Eel.tscn")
+
 @onready var kelp_scene := preload("res://Components/Decoration/Kelp.tscn")
 
 @onready var particles := $"../Particles"
@@ -52,6 +54,7 @@ func _process(delta: float) -> void:
 	if is_falling:
 		handle_spawning()
 		handle_kelp_spawn()
+		handle_spawn_eels()
 		if get_parent().get_node("Player").anchor.is_grabbed:
 			if Input.is_action_pressed("move_up"):
 				float_speed = BASE_FLOAT_SPEED * SPEED_DOWN_MODIFIER
@@ -86,6 +89,23 @@ func spawn_kelp(x_position : float, rotation_in_degrees : float):
 	kelp_scene_instance.global_position.y = -45.0 + randf_range(0.025, 0.5)
 	kelp_scene_instance.global_position.z = randf_range(-17.0, 5.0)
 	kelp_scene_instance.rotation.y = deg_to_rad(rotation_in_degrees)
+
+var eel_spawn_timer := 0.0
+var eel_spawn_interval := 15.0
+
+func handle_spawn_eels():
+	var now = Time.get_unix_time_from_system()
+	if distance_traveled >= 50.0 && distance_traveled <= 180.0:
+		if now - eel_spawn_timer >= eel_spawn_interval:
+			spawn_eel()
+			eel_spawn_timer = now
+
+func spawn_eel():
+	var eel_scene_instance = eel_scene.instantiate() as Eel
+	eel_scene_instance.environment_spawner = self
+	add_child(eel_scene_instance)
+	eel_scene_instance.global_position.y = -25.0
+	eel_scene_instance.rotate_y(deg_to_rad(180))
 
 func handle_spawning():
 	var now = Time.get_unix_time_from_system()

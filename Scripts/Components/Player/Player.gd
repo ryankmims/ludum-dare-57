@@ -95,6 +95,8 @@ var sixth_reverse_done = false
 var seventh_reverse_done = false
 var eighth_reverse_done = false
 
+var controls_disabled := false
+
 func _ready() -> void:
 	blackout_screen.visible = true
 	music_player.play()
@@ -143,7 +145,7 @@ func _process(delta: float) -> void:
 			
 			left_mouse_button_sprite.visible = can_control_anchor && !anchor.is_grabbed
 			
-			if can_control_anchor:
+			if can_control_anchor && !controls_disabled:
 				if Input.is_action_just_pressed("control_anchor"):
 					just_grabbed_anchor = true
 					print_debug("just grabbed anchor")
@@ -172,6 +174,13 @@ func _process(delta: float) -> void:
 	handle_control_tutorial()
 	handle_depths()
 	handle_captions(delta)
+	handle_control_disabled()
+
+func handle_control_disabled():
+	if controls_disabled:
+		anchor.is_grabbed = false
+		await get_tree().create_timer(5.0).timeout
+		controls_disabled = false
 
 func handle_captions(delta):
 	var now = Time.get_unix_time_from_system()
@@ -256,7 +265,8 @@ func _physics_process(delta: float) -> void:
 		player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, target_rotation, delta * 10.0)  # Smooth rotation
 		
 	else:
-		global_position = anchor.global_position + player_offset_at_grab
+		if !controls_disabled:
+			global_position = anchor.global_position + player_offset_at_grab
 	move_and_slide()
 
 func add_light(amount : int):
