@@ -147,6 +147,14 @@ func _process(delta: float) -> void:
 			left_mouse_button_sprite.visible = can_control_anchor && !anchor.is_grabbed
 			
 			if can_control_anchor && !controls_disabled:
+				# Check distance to anchor
+				var distance_to_anchor = global_position.distance_to(anchor.global_position)
+				if distance_to_anchor > 10.0:  # Maximum distance to grab
+					can_control_anchor = false
+					anchor.is_grabbed = false
+					just_grabbed_anchor = false
+					return
+				
 				if Input.is_action_just_pressed("control_anchor"):
 					just_grabbed_anchor = true
 					print_debug("just grabbed anchor")
@@ -156,6 +164,7 @@ func _process(delta: float) -> void:
 					anchor.is_grabbed = true
 				else:
 					anchor.is_grabbed = false
+					just_grabbed_anchor = false
 			
 			if walking && !anchor.is_grabbed:
 				animation_player.play("Walk")

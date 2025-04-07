@@ -131,10 +131,16 @@ func _on_anchor_control_area_body_entered(body: Node3D) -> void:
 	print_debug(body)
 	if body is Player:
 		body.can_control_anchor = true
+		# Force reset grab state when entering control area
+		body.anchor.is_grabbed = false
+		body.just_grabbed_anchor = false
 
 func _on_anchor_control_area_body_exited(body: Node3D) -> void:
 	if body is Player:
 		body.can_control_anchor = false
+		# Force reset grab state when exiting control area
+		body.anchor.is_grabbed = false
+		body.just_grabbed_anchor = false
 
 func _on_stopping_area_body_entered(body: Node3D) -> void:
 	if body.get_parent().get_parent() is SpawnableEntity:
