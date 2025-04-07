@@ -9,7 +9,7 @@ TODO:
 	- [ ] side of wall decoration
 	- [ ] title card
 	- [ ] SFX
-		- [ ] dragging bug
+		- [ X ] dragging bug
 		- [ ] collecting light
 		- [ ] getting hit
 	- [ ] display joypad icons if/when connected

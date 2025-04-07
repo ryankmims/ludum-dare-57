@@ -77,7 +77,7 @@ var has_jumped := false
 
 func _ready() -> void:
 	blackout_screen.visible = true
-	music_player.play()
+	# music_player.play()
 
 func _process(delta: float) -> void:
 	var now = Time.get_unix_time_from_system()
@@ -165,29 +165,24 @@ func handle_music():
 	music_player.play()
 
 func handle_light(delta: float) -> void:
-	# Decrease sanity over time
 	sanity -= 0.05 * delta
 	sanity = clamp(sanity, 0.0, 5.0)
 	
-	# Calculate base light intensity based on sanity
-	var sanity_factor = (sanity / 5.0) * (sanity / 5.0) * (sanity / 5.0) # Cubic falloff for more dramatic effect
+	var sanity_factor = (sanity / 5.0) * (sanity / 5.0) * (sanity / 5.0)
 	var base_energy = 15 * sanity_factor
-	var omni_base_energy = 0.5 * sanity_factor
+	var omni_base_energy = lerp(0.5, 2.0, sanity_factor)
 	
-	# Apply light settings based on the light state
-	if !light_is_on: # Light is flickering off
+	if !light_is_on:
 		headlamp_light.light_energy = 0.0
 		headlamp_light.light_volumetric_fog_energy = 0.0
 		omni_light.light_energy = 0.0
-	else: # Light is on (normal or during flicker on state)
-		headlamp_light.light_energy = max(1.0, base_energy)
-		headlamp_light.light_volumetric_fog_energy = max(1.0, base_energy)
-		omni_light.light_energy = max(0.2, omni_base_energy)
+	else:
+		headlamp_light.light_energy = clamp(base_energy, 2.0, 5.0)
+		headlamp_light.light_volumetric_fog_energy = clamp(base_energy, 2.0, 5.0)
+		omni_light.light_energy = max(0.5, omni_base_energy)
 	
-	# Set light range based on sanity
-	omni_light.omni_range = lerp(0.5, 2.5, sanity_factor)
+	omni_light.omni_range = lerp(1.0, 4.0, sanity_factor)
 	
-	# Check for death condition
 	if sanity <= 0.0:
 		dead = true
 
