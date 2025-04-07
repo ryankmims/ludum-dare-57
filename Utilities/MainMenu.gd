@@ -8,6 +8,8 @@ class_name MainMenu extends Node3D
 @onready var audio_player := $AudioStreamPlayer2D
 @onready var ambient_player := $AudioStreamPlayer2D2
 
+@onready var controls_ui := $MainMenuUI/ControlsUI
+
 @onready var blackout_screen := $BlackoutScreen
 
 @export var main : Main
@@ -48,3 +50,9 @@ func _on_start_button_pressed() -> void:
 	should_dampen_sound = true
 	main_menu_ui.visible = false
 	blackout_screen.visible = true
+
+func _on_controls_button_button_down() -> void:
+	controls_ui.visible = true
+
+func _on_close_controls_button_button_down() -> void:
+	controls_ui.visible = false
