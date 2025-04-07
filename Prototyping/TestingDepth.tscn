@@ -1125,3 +1125,57 @@ draw_pass_1 = SubResource("PlaneMesh_5idfb")
 
 [node name="SpawnLocation" type="Node3D" parent="BaseGround"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65732, 0)
+
+[node name="BaseGround2" type="Node3D" parent="." node_paths=PackedStringArray("environment_spawner", "particles_collection")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2823, 2.93956, 0)
+script = ExtResource("7_jae6u")
+environment_spawner = NodePath("../EnvironmentSpawner")
+can_collide = true
+particles_collection = NodePath("ParticlesCollection")
+
+[node name="BasePlatform" type="MeshInstance3D" parent="BaseGround2"]
+transform = Transform3D(-5.44409e-08, 0, -3.11144, 0, 1, 0, 1.24546, 0, -1.36006e-07, 0, 0, 0)
+mesh = SubResource("ArrayMesh_7k22u")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_lwi7r")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BaseGround2/BasePlatform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaseGround2/BasePlatform/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_lshau")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="BaseGround2/BasePlatform/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45916, 0)
+shape = SubResource("ConcavePolygonShape3D_eqdc5")
+
+[node name="YourLight" parent="BaseGround2" instance=ExtResource("10_hke35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171412, 2.2472, 0.0598316)
+
+[node name="Platforms" type="Node3D" parent="BaseGround2"]
+
+[node name="ParticlesCollection" type="Node3D" parent="BaseGround2"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="BaseGround2/ParticlesCollection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60288, 0)
+lifetime = 1.32
+process_material = SubResource("ParticleProcessMaterial_lshau")
+draw_pass_1 = SubResource("PlaneMesh_5idfb")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="BaseGround2/ParticlesCollection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90446, 1.04443, -0.105431)
+lifetime = 1.32
+speed_scale = 0.5
+explosiveness = 0.15
+process_material = SubResource("ParticleProcessMaterial_lshau")
+draw_pass_1 = SubResource("PlaneMesh_5idfb")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="BaseGround2/ParticlesCollection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09702, 0.915593, 0)
+lifetime = 1.32
+speed_scale = 0.5
+explosiveness = 0.15
+process_material = SubResource("ParticleProcessMaterial_lshau")
+draw_pass_1 = SubResource("PlaneMesh_5idfb")
+
+[node name="SpawnLocation" type="Node3D" parent="BaseGround2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65732, 0)
