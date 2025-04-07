@@ -321,29 +321,32 @@ func handle_depths():
 		fourth_stanza_done = true
 		voice_player.stream = fourth_stanza
 		voice_player.play()
-		set_caption("... of blackness, where the fear resides ...", 5.0)
+		set_caption("... it takes my mind but not my light.", 5.0)
 	
 	if anchor.distance_traveled >= 110.0 && !fifth_reverse_done:
 		show_caption = true
 		fifth_reverse_done = true
 		voice_player.stream = fifth_reverse
 		voice_player.play()
-		set_caption("... it takes my mind but not my light.", 5.0)
+		set_caption(".thgil ym ton tub dnim ym sekat ti ...", 5.0)
 	
 	if anchor.distance_traveled >= 130.0 && !sixth_reverse_done:
 		show_caption = true
 		sixth_reverse_done = true
 		voice_player.stream = sixth_reverse
 		voice_player.play()
+		set_caption("... sediser raef eht erehw ,ssenkcalb fo ... ", 5.0)
 	
 	if anchor.distance_traveled >= 150.0 && !seventh_reverse_done:
 		show_caption = true
 		seventh_reverse_done = true
 		voice_player.stream = seventh_reverse
 		voice_player.play()
+		set_caption("... llah e ytpm dna ecaep eht txiwteb ... ", 5.0)
 	
 	if anchor.distance_traveled >= 170.0 && !eighth_reverse_done:
 		show_caption = true
 		eighth_reverse_done = true
 		voice_player.stream = eighth_reverse
 		voice_player.play()
+		set_caption("... sllaf a nrohca ym woleb ecalp ehT", 5.0)
