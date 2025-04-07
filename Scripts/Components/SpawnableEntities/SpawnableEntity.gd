@@ -36,12 +36,33 @@ func take_damage(amount: int) -> void:
 	health -= amount
 	print("platform took damage!")
 	
+	shake_platform()
+	
 	if is_instance_valid(particles_collection):
 		print_debug("should turn visible")
 		particles_collection.visible = true
 	
 	if health <= 0:
 		break_platform()
+		
+func shake_platform() -> void:
+	var tween = create_tween()
+	var original_position = position
+	var shake_amount = 0.1
+	var shake_duration = 0.2
+	
+	# Shake in random directions
+	for i in range(3):
+		var random_offset = Vector3(
+			randf_range(-shake_amount, shake_amount),
+			randf_range(-shake_amount, shake_amount),
+			randf_range(-shake_amount, shake_amount)
+		)
+		tween.tween_property(self, "position", original_position + random_offset, shake_duration / 6)
+		tween.tween_property(self, "position", original_position, shake_duration / 6)
+	
+	# Ensure we return to the original position
+	tween.tween_property(self, "position", original_position, shake_duration / 6)
 		
 func break_platform() -> void:
 	var sound_player_drop_instance = sound_player_drop_scene.instantiate() as SoundPlayerDrop
