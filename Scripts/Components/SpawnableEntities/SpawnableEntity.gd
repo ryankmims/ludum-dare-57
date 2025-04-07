@@ -1,6 +1,9 @@
 class_name SpawnableEntity extends Node3D
 
-@onready var dag_scene := preload("res://Components/Mobs/Dag/Dag.tscn")
+var dag_scene: PackedScene
+
+func _init():
+	dag_scene = load("res://Components/Mobs/Dag/Dag.tscn")
 
 @onready var sound_player_drop_scene := preload("res://Components/Utilities/SoundPlayerDrop.tscn")
 

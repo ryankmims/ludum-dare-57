@@ -12,10 +12,11 @@ func _ready() -> void:
 func handle_spawns():
 	var roll = randi_range(0, 5)
 	if roll == 0:
-		var dag_scene_instance = dag_scene.instantiate() as Dag
+		var dag_scene_instance = dag_scene.instantiate()
 		dag_scene_instance.spawnable_entity = self
 		add_child(dag_scene_instance)
 		dag_scene_instance.global_position = spawn_location.global_position
+		print("Dag spawned at position: ", spawn_location.global_position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
