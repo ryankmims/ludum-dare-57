@@ -37,4 +37,66 @@ stream = ExtResource("2_r3qcd")
 volume_db = 6.0
 autoplay = true
 
+[node name="Tips" type="Node2D" parent="InsanityScreenUI"]
+
+[node name="FirstTip" type="RichTextLabel" parent="InsanityScreenUI/Tips"]
+visible = false
+offset_left = 1473.0
+offset_top = 1017.0
+offset_right = 1902.0
+offset_bottom = 1061.0
+text = "Collect enough light to fill your headlamp"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SecondTip" type="RichTextLabel" parent="InsanityScreenUI/Tips"]
+visible = false
+offset_left = 1472.0
+offset_top = 976.0
+offset_right = 1901.0
+offset_bottom = 1020.0
+text = "You can try docking on the side of the platforms"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThirdTip" type="RichTextLabel" parent="InsanityScreenUI/Tips"]
+visible = false
+offset_left = 1476.0
+offset_top = 937.0
+offset_right = 1905.0
+offset_bottom = 981.0
+text = "You can destroy platforms with enemies"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FourthTip" type="RichTextLabel" parent="InsanityScreenUI/Tips"]
+visible = false
+offset_left = 1471.0
+offset_top = 898.0
+offset_right = 1900.0
+offset_bottom = 942.0
+text = "You can dock using the stem and top of the anchor"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FifthTip" type="RichTextLabel" parent="InsanityScreenUI/Tips"]
+visible = false
+offset_left = 1470.0
+offset_top = 859.0
+offset_right = 1899.0
+offset_bottom = 903.0
+text = "Try using a controller..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="69thTip" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 35.0
+offset_top = 23.0
+offset_right = 570.0
+offset_bottom = 66.0
+text = "Ayyyyyy, 69th death lets goooooo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="InsanityScreenUI/Button" to="." method="_on_button_pressed"]

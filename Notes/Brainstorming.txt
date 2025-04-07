@@ -1,13 +1,24 @@
 Theme: Depths
 
 TODO:
+	- [ ] potential double jumping (spots where you get stuck)
+	- [ ] Latern added to the anchor
+	- [ ] if people land directly on the platform, what do?
 	- [ ] another way to use your sanity
-	- [ ] Enemies (Crab)
+	- [ (-) ] Enemies (Crab)
 		- models for the enemies
-	- [ ] add particle effects to all platforms
+	- [ X ] add particle effects to all platforms
 	- [ ] better ending writing
-	- [ ] side of wall decoration
+	- [ X ] side of wall decoration
 	- [ ] title card
+		- Name ideas?
+			- As above so below <- something like that?
+			- LIGHT
+			- but not my light
+			- Not my light
+			- Light Through Dark
+			- The Darkness that Consumes My Soul
+	- [ ] Game icon
 	- [ ] SFX
 		- [ X ] dragging bug
 		- [ ] collecting light

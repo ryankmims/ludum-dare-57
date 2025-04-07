@@ -6,6 +6,8 @@ class_name Main extends Node
 @onready var insanity_screen := preload("res://Utilities/InsanityScreen.tscn")
 @onready var win_screen := preload("res://Utilities/WinScreen.tscn")
 
+var number_of_deaths := 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	change_scene(main_menu_scene)
@@ -15,9 +17,8 @@ func change_scene(scene : PackedScene):
 		child.queue_free()
 	
 	var scene_instance = scene.instantiate()
-	add_child(scene_instance)
-	
 	scene_instance.main = self
+	add_child(scene_instance)
 
 func start_game():
 	change_scene(game_scene)
