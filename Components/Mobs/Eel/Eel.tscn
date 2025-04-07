@@ -187,7 +187,6 @@ mesh = SubResource("ArrayMesh_cqyq1")
 skin = SubResource("Skin_wpjvb")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Eel/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bone_name = "Bone"
 bone_idx = 0
 

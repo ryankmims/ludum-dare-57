@@ -1,6 +1,8 @@
 Theme: Depths
 
 TODO:
+	- [ ] how do we host this game?
+		- [ ] how do we submit it? etc.
 	- [ ] potential double jumping (spots where you get stuck)
 	- [ ] Latern added to the anchor
 	- [ ] if people land directly on the platform, what do?
@@ -22,7 +24,7 @@ TODO:
 	- [ ] SFX
 		- [ X ] dragging bug
 		- [ ] collecting light
-		- [ ] getting hit
+		- [ X ] getting hit
 	- [ ] display joypad icons if/when connected
 
 	- [ X ] headlamp brightness
