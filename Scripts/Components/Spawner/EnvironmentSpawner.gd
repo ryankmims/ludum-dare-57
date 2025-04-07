@@ -91,7 +91,7 @@ func spawn_kelp(x_position : float, rotation_in_degrees : float):
 	kelp_scene_instance.rotation.y = deg_to_rad(rotation_in_degrees)
 
 var eel_spawn_timer := 0.0
-var eel_spawn_interval := 15.0
+var eel_spawn_interval := 25.0
 
 func handle_spawn_eels():
 	var now = Time.get_unix_time_from_system()
@@ -101,6 +101,7 @@ func handle_spawn_eels():
 			eel_spawn_timer = now
 
 func spawn_eel():
+	eel_spawn_interval = randf_range(25.0, 30.0)
 	var eel_scene_instance = eel_scene.instantiate() as Eel
 	eel_scene_instance.environment_spawner = self
 	add_child(eel_scene_instance)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://b0fpf3meptc46"]
+[gd_scene load_steps=13 format=4 uid="uid://b0fpf3meptc46"]
 
 [ext_resource type="Texture2D" uid="uid://dk2i144nhrh88" path="res://Models/Mobs/Eel/Eel_GiantEelTexture.png" id="1_6wbtb"]
 [ext_resource type="Script" uid="uid://dyoq3kf8rqm1s" path="res://Scripts/Components/Mobs/Eel/Eel.gd" id="1_ssywa"]
+[ext_resource type="AudioStream" uid="uid://c05vspqsuilpc" path="res://Audio/SoundEffects/eel_theme.wav" id="3_6sijv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_feplg"]
 resource_name = "EelMaterial"
@@ -213,5 +214,9 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ContactArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.07428, 0.464983)
 shape = SubResource("CapsuleShape3D_ssywa")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_6sijv")
+volume_db = 6.0
 
 [connection signal="body_entered" from="ContactArea" to="." method="_on_contact_area_body_entered"]

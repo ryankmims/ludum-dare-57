@@ -306,6 +306,7 @@ func handle_control_tutorial():
 
 func handle_depths():
 	if anchor.distance_traveled >= 20.0 && !first_stanza_done:
+		voice_player.volume_db = 10.0
 		show_caption = true
 		first_stanza_done = true
 		voice_player.stream = first_stanza
