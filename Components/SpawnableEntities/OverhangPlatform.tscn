@@ -145,3 +145,6 @@ speed_scale = 0.5
 explosiveness = 0.15
 process_material = SubResource("ParticleProcessMaterial_5pkpf")
 draw_pass_1 = SubResource("PlaneMesh_bcokx")
+
+[node name="SpawnLocation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50257, 5.62661, 0)
