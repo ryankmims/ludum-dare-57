@@ -10,7 +10,7 @@ func _ready() -> void:
 			handle_spawns()
 
 func handle_spawns():
-	var roll = randi_range(0, 5)
+	var roll = randi_range(0, 4)
 	if roll == 0:
 		var dag_scene_instance = dag_scene.instantiate() as Dag
 		dag_scene_instance.spawnable_entity = self

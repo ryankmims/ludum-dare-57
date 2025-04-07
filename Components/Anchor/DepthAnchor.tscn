@@ -203,8 +203,10 @@ draw_pass_1 = SubResource("SphereMesh_xox5n")
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
 
 [node name="DevUI" type="Node2D" parent="."]
+visible = false
 
 [node name="Level" type="Label" parent="DevUI"]
+visible = false
 offset_left = 23.0
 offset_top = 1043.0
 offset_right = 132.0

@@ -7,7 +7,7 @@ func _init():
 
 @onready var sound_player_drop_scene := preload("res://Components/Utilities/SoundPlayerDrop.tscn")
 
-const LEVEL_TO_START_SPAWNING := 30
+const LEVEL_TO_START_SPAWNING := 25
 
 @export var environment_spawner : EnvironmentSpawner
 @export var can_collide := false
