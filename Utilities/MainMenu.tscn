@@ -1,10 +1,13 @@
-[gd_scene load_steps=42 format=4 uid="uid://en10a03k5pi7"]
+[gd_scene load_steps=47 format=4 uid="uid://en10a03k5pi7"]
 
 [ext_resource type="Script" uid="uid://curm3vkbmil6l" path="res://Utilities/MainMenu.gd" id="1_0cbh8"]
 [ext_resource type="Shader" uid="uid://b2x2s46atom5x" path="res://Prototyping/ScrollingBackgroundShader.gdshader" id="1_6c66f"]
+[ext_resource type="Texture2D" uid="uid://c6jr2eof4048q" path="res://Sprites/TitleScreen/start_button.png" id="3_07a8w"]
 [ext_resource type="Material" uid="uid://16sxpbxeygfg" path="res://Materials/Player/PlayerMaterial.tres" id="3_t5dic"]
 [ext_resource type="Texture2D" uid="uid://b65qyi3fccacs" path="res://Models/Man/Man_HelmetTexture.png" id="4_7insr"]
+[ext_resource type="Texture2D" uid="uid://b3ovv0dsf5ewl" path="res://Sprites/TitleScreen/controls_button.png" id="4_qujg4"]
 [ext_resource type="AudioStream" uid="uid://c77cp0kckhika" path="res://Audio/Music/LD57_main_menu_waiting.wav" id="5_7insr"]
+[ext_resource type="Texture2D" uid="uid://drvul4ae4som0" path="res://Sprites/TitleScreen/main_logo.png" id="5_qujg4"]
 [ext_resource type="AudioStream" uid="uid://cnhq8w42plb5l" path="res://Audio/SoundEffects/ambient_underwater.wav" id="6_sb04f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t5dic"]
@@ -107,6 +110,12 @@ grow_amount = 0.05
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gyq4"]
 next_pass = SubResource("StandardMaterial3D_qcg1t")
 diffuse_mode = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jmso"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fd3py"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sb04f"]
 lifetime_randomness = 0.09
@@ -1446,19 +1455,26 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6gyq4")
 [node name="MainMenuUI" type="Node2D" parent="."]
 
 [node name="StartButton" type="Button" parent="MainMenuUI"]
-offset_left = 1023.0
-offset_top = 515.0
-offset_right = 1341.0
-offset_bottom = 571.0
-text = "Start"
+offset_left = 1156.0
+offset_top = 827.0
+offset_right = 1736.0
+offset_bottom = 997.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_5jmso")
+icon = ExtResource("3_07a8w")
 
 [node name="ControlsButton" type="Button" parent="MainMenuUI"]
-offset_left = 1023.0
-offset_top = 590.97
-offset_right = 1341.0
-offset_bottom = 646.97
-text = "Controls
-"
+offset_left = 1161.0
+offset_top = 917.0
+offset_right = 1749.0
+offset_bottom = 1095.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_fd3py")
+icon = ExtResource("4_qujg4")
+
+[node name="Sprite2D" type="Sprite2D" parent="MainMenuUI"]
+position = Vector2(1289, 436)
+texture = ExtResource("5_qujg4")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.24207, 0, 11.5159)
