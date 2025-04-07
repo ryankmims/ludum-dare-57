@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cc77pfnhoplrf"]
+[gd_scene load_steps=28 format=4 uid="uid://cc77pfnhoplrf"]
 
 [ext_resource type="Script" uid="uid://kau50xchdu4r" path="res://Scripts/Components/Player/Player.gd" id="1_a50ic"]
 [ext_resource type="Texture2D" uid="uid://b65qyi3fccacs" path="res://Models/Man/Man_HelmetTexture.png" id="2_8qe71"]
@@ -1286,6 +1286,9 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_a50ic"]
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_aycwo"]
+font_color = Color(1, 1, 1, 0)
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_a50ic")
 
@@ -1514,7 +1517,7 @@ shape = SubResource("CapsuleShape3D_cyqth")
 [node name="PlayerUI" type="Node2D" parent="."]
 
 [node name="LeftMouseButtonSprite" type="Sprite2D" parent="PlayerUI"]
-position = Vector2(939, 800)
+position = Vector2(959.21, 840)
 texture = ExtResource("4_mo2m5")
 
 [node name="ControlAnchorLabel" type="Label" parent="PlayerUI/LeftMouseButtonSprite"]
@@ -1532,9 +1535,10 @@ text = "Grab"
 label_settings = SubResource("LabelSettings_a50ic")
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="JumpSprite" type="Sprite2D" parent="PlayerUI"]
-position = Vector2(1016.73, 800)
+position = Vector2(1036.94, 840)
 texture = ExtResource("5_aycwo")
 
 [node name="ControlAnchorLabel" type="Label" parent="PlayerUI/JumpSprite"]
@@ -1552,9 +1556,10 @@ text = "Jump"
 label_settings = SubResource("LabelSettings_a50ic")
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="MovementSprite" type="Sprite2D" parent="PlayerUI"]
-position = Vector2(857.79, 800)
+position = Vector2(878, 840)
 texture = ExtResource("5_eorbh")
 
 [node name="MoveLabel" type="Label" parent="PlayerUI/MovementSprite"]
@@ -1572,6 +1577,7 @@ text = "Move"
 label_settings = SubResource("LabelSettings_a50ic")
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="BlackoutScreen" type="ColorRect" parent="PlayerUI"]
 visible = false
@@ -1580,6 +1586,16 @@ offset_top = -19.0
 offset_right = 1955.0
 offset_bottom = 1109.0
 color = Color(0, 0, 0, 1)
+
+[node name="CaptionLabel" type="Label" parent="PlayerUI"]
+offset_left = -1.0
+offset_top = 1041.0
+offset_right = 1923.0
+offset_bottom = 1064.0
+text = "The place below my anchor falls"
+label_settings = SubResource("LabelSettings_aycwo")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MusicPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_n5pqa")
