@@ -76,6 +76,7 @@ var won := false
 var has_moved := false
 var has_grabbed := false
 var has_jumped := false
+var has_double_jumped := false
 
 var show_caption := false
 var hide_caption := false
@@ -243,11 +244,16 @@ func handle_light(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		has_double_jumped = false
 
 	if not anchor.is_grabbed:
-		if Input.is_action_just_pressed("jump") and is_on_floor():
-			has_jumped = true
-			velocity.y = JUMP_VELOCITY
+		if Input.is_action_just_pressed("jump"):
+			if is_on_floor():
+				has_jumped = true
+				velocity.y = JUMP_VELOCITY
+			elif not has_double_jumped:
+				has_double_jumped = true
+				velocity.y = JUMP_VELOCITY * 0.8
 
 		var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
