@@ -57,7 +57,7 @@ _limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0.0252525, 0.351236), 0.0, 0.0, 0, 0, Vector2(1, 0.112958), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_842gm"]
+[sub_resource type="CurveTexture" id="CurveTexture_eqdc5"]
 curve = SubResource("Curve_eqdc5")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lshau"]
@@ -72,18 +72,18 @@ scale_min = 0.5
 scale_max = 0.75
 scale_over_velocity_min = 0.5
 scale_over_velocity_max = 1.0
-scale_over_velocity_curve = SubResource("CurveTexture_842gm")
+scale_over_velocity_curve = SubResource("CurveTexture_eqdc5")
 anim_speed_min = 0.99
 anim_speed_max = 5.35
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kl0jj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_842gm"]
 cull_mode = 2
 albedo_color = Color(0.490145, 0.469278, 0.300361, 1)
 billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5idfb"]
-material = SubResource("StandardMaterial3D_kl0jj")
+material = SubResource("StandardMaterial3D_842gm")
 size = Vector2(6.42, 3.23)
 orientation = 0
 

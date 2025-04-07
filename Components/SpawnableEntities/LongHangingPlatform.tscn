@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://b5khd1gg5v411"]
+[gd_scene load_steps=15 format=4 uid="uid://b5khd1gg5v411"]
 
 [ext_resource type="Script" uid="uid://cvvy2115fyi5c" path="res://Scripts/Components/SpawnableEntities/LongHangingPlatform.gd" id="1_4adfu"]
 [ext_resource type="Texture2D" uid="uid://2o6x5p2kap03" path="res://Models/Platforms/Platforms_LongHangingPlatformTexture.png" id="1_cxuhr"]
@@ -55,10 +55,46 @@ backface_collision = true
 data = PackedVector3Array(2.93, 0, 1.575, -2.93, 0, 1.575, 2.93, 0, -1.575, -2.93, 0, 1.575, -2.93, 0, -1.575, 2.93, 0, -1.575)
 backface_collision = true
 
-[node name="LongHangingPlatform" type="Node3D"]
+[sub_resource type="Curve" id="Curve_4adfu"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0.0252525, 0.351236), 0.0, 0.0, 0, 0, Vector2(1, 0.112958), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_842gm"]
+curve = SubResource("Curve_4adfu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_js2cp"]
+lifetime_randomness = 0.12
+radial_velocity_min = -5.00002
+radial_velocity_max = 4.99998
+gravity = Vector3(0, 9.8, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 10.34
+damping_max = 40.345
+scale_min = 0.5
+scale_max = 0.75
+scale_over_velocity_min = 0.5
+scale_over_velocity_max = 1.0
+scale_over_velocity_curve = SubResource("CurveTexture_842gm")
+anim_speed_min = 0.99
+anim_speed_max = 5.35
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kl0jj"]
+cull_mode = 2
+albedo_color = Color(0.490145, 0.469278, 0.300361, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6m54a"]
+material = SubResource("StandardMaterial3D_kl0jj")
+size = Vector2(6.42, 3.23)
+orientation = 0
+
+[node name="LongHangingPlatform" type="Node3D" node_paths=PackedStringArray("particles_collection")]
 script = ExtResource("1_4adfu")
 can_collide = true
 health = 6
+particles_collection = NodePath("ParticlesCollection")
 
 [node name="LongHangingPlatformWithLedgeAtBase" type="MeshInstance3D" parent="."]
 transform = Transform3D(-5.4441e-08, 0, -3.11144, 0, 1, 0, 1.24546, 0, -1.36006e-07, 0, 0, 0)
@@ -90,3 +126,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79125, 0)
 
 [node name="SpawnTwo" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68071, -9.77025, 0)
+
+[node name="ParticlesCollection" type="Node3D" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="ParticlesCollection"]
+transform = Transform3D(1.79, 0, 0, 0, 1.79, 0, 0, 0, 1.79, 0, 1.60288, 0)
+lifetime = 1.32
+process_material = SubResource("ParticleProcessMaterial_js2cp")
+draw_pass_1 = SubResource("PlaneMesh_6m54a")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="ParticlesCollection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.170314, -5.11979, -0.105431)
+lifetime = 1.32
+speed_scale = 0.5
+explosiveness = 0.15
+process_material = SubResource("ParticleProcessMaterial_js2cp")
+draw_pass_1 = SubResource("PlaneMesh_6m54a")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="ParticlesCollection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27063, -10.5996, 0)
+lifetime = 1.32
+speed_scale = 0.5
+explosiveness = 0.15
+process_material = SubResource("ParticleProcessMaterial_js2cp")
+draw_pass_1 = SubResource("PlaneMesh_6m54a")

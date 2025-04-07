@@ -47,4 +47,46 @@ func break_platform() -> void:
 	var sound_player_drop_instance = sound_player_drop_scene.instantiate() as SoundPlayerDrop
 	get_tree().root.add_child(sound_player_drop_instance)
 	sound_player_drop_instance.global_position = global_position
+	
+	if is_instance_valid(particles_collection):
+		# Make a copy of particles to keep them after platform is destroyed
+		var particles_instance = particles_collection.duplicate()
+		get_tree().root.add_child(particles_instance)
+		particles_instance.global_position = global_position
+		particles_instance.visible = true
+		
+		# Emit from all particle systems with dramatic settings
+		for particle in particles_instance.get_children():
+			if particle is GPUParticles3D:
+				particle.emitting = true
+				particle.amount = 80
+				particle.explosiveness = 0.9
+				particle.lifetime = 1.5
+				particle.speed_scale = 2.0
+				particle.one_shot = true
+				
+				if particle.process_material is ParticleProcessMaterial:
+					var mat = particle.process_material as ParticleProcessMaterial
+					mat.initial_velocity_min = 4.0
+					mat.initial_velocity_max = 10.0
+					mat.scale_min = 1.0
+					mat.scale_max = 1.5
+					
+		if particles_instance.get_child_count() > 0 and particles_instance.get_child(0) is GPUParticles3D:
+			var explosion = particles_instance.get_child(0).duplicate()
+			particles_instance.add_child(explosion)
+			explosion.emitting = true
+			explosion.explosiveness = 1.0
+			explosion.amount = 120
+			explosion.lifetime = 1.0
+			explosion.one_shot = true
+		
+		# Set up a timer to free the particles after they're done
+		var timer = Timer.new()
+		particles_instance.add_child(timer)
+		timer.wait_time = 2.5  # Duration for the explosion effect
+		timer.one_shot = true
+		timer.timeout.connect(func(): particles_instance.queue_free())
+		timer.start()
+	
 	queue_free()
