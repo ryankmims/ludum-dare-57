@@ -12,7 +12,7 @@ func _ready() -> void:
 func handle_spawns():
 	var roll = randi_range(0, 5)
 	if roll == 0:
-		var dag_scene_instance = dag_scene.instantiate()
+		var dag_scene_instance = dag_scene.instantiate() as Dag
 		dag_scene_instance.spawnable_entity = self
 		add_child(dag_scene_instance)
 		dag_scene_instance.global_position = spawn_location.global_position

@@ -39,6 +39,7 @@ func throw():
 		var dag_ball_attack_scene_instance = dag_ball_attack_scene.instantiate() as DagBallAttack
 		var offset_player_position := Vector3(spawnable_entity.player.global_position.x, spawnable_entity.player.global_position.y - 5.0, spawnable_entity.player.global_position.z)
 		dag_ball_attack_scene_instance.direction = global_position.direction_to(offset_player_position)
+		dag_ball_attack_scene_instance.home_platform = spawnable_entity
 		add_child(dag_ball_attack_scene_instance)
 		dag_ball_attack_scene_instance.global_position = dag_ball_emitter.global_position
 		dag_ball_attack_scene_instance.environment_spawner = spawnable_entity.environment_spawner

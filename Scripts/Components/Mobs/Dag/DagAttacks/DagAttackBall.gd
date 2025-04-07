@@ -5,6 +5,7 @@ class_name DagBallAttack extends Node3D
 @onready var audio_player := $AudioStreamPlayer3D
 
 @export var environment_spawner : EnvironmentSpawner
+@export var home_platform : SpawnableEntity
 
 var direction : Vector3
 
@@ -34,5 +35,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		
 		await get_tree().create_timer(2.0).timeout
 		queue_free()
+		
 	if body.get_parent().get_parent() is SpawnableEntity:
-		print_debug("HIT PLATFORMMMM")
+		if body.get_parent().get_parent() != home_platform:
+			body.get_parent().get_parent().take_damage(5)
