@@ -97,7 +97,7 @@ var eighth_reverse_done = false
 
 func _ready() -> void:
 	blackout_screen.visible = true
-	# music_player.play()
+	music_player.play()
 
 func _process(delta: float) -> void:
 	var now = Time.get_unix_time_from_system()
