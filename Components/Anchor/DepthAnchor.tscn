@@ -80,7 +80,7 @@ size = Vector3(2.1001, 23.6254, 9.71843)
 size = Vector3(2.1001, 23.7455, 24.294)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qcg1t"]
-radius = 5.694
+radius = 5.123
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oprqa"]
 lifetime_randomness = 0.15
@@ -164,7 +164,7 @@ current = true
 [node name="AnchorControlArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnchorControlArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.630414)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.13571)
 shape = SubResource("SphereShape3D_qcg1t")
 
 [node name="AnchorHealthBar" type="Node3D" parent="."]

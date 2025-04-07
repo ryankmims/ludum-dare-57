@@ -251,10 +251,11 @@ func handle_light(delta: float) -> void:
 		dead = true
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
+	if not is_on_floor() and not anchor.is_grabbed:
 		velocity += get_gravity() * delta
 	else:
 		has_double_jumped = false
+		velocity.y = 0  # Reset vertical velocity when on floor or grabbed
 
 	if not anchor.is_grabbed:
 		if Input.is_action_just_pressed("jump"):
@@ -282,7 +283,16 @@ func _physics_process(delta: float) -> void:
 		
 	else:
 		if !controls_disabled:
+			if just_grabbed_anchor:
+				player_offset_at_grab = global_position - anchor.global_position
+				just_grabbed_anchor = false
+				# Make player face the anchor with smooth rotation
+				var target_rotation = atan2(anchor.global_position.x - global_position.x, anchor.global_position.z - global_position.z)
+				player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, target_rotation, 0.1)
+				player_mesh.rotation.x = 0.0
+				player_mesh.rotation.z = 0.0
 			global_position = anchor.global_position + player_offset_at_grab
+		velocity = Vector3.ZERO  # Reset all velocity when grabbed
 	move_and_slide()
 
 func add_light(amount : int):
